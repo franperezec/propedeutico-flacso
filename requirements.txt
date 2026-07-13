@@ -1,0 +1,14 @@
+# Dependencias del Propedéutico de Matemáticas y Programación en Python
+# FLACSO Ecuador — Maestría en Economía del Desarrollo 2026
+#
+# Instalación manual:  python -m pip install -r requirements.txt
+# Con VS Code: marcar este archivo al crear el entorno virtual (.venv),
+# como se explica en el manual de la clase 2.
+
+ipykernel==7.3.0     # Kernel de Python para notebooks en VS Code (manual clase 2)
+matplotlib==3.11.0   # Gráficos y visualización (desde la clase 1; límites y funciones, S14-15)
+numpy==2.5.1         # Cálculo matricial (S6-7); determinantes, sistemas y eigenvalores (S10-12)
+pandas==3.0.3        # Series y DataFrames, carga de datos CSV/Excel (S9)
+openpyxl==3.1.5      # Lectura y escritura de archivos Excel con pandas (S9)
+sympy==1.14.0        # Cálculo simbólico: límites, derivadas e integrales (S16-19)
+scipy==1.18.0        # Optimización (S17, scipy.optimize) y distribuciones (S22-23, scipy.stats)

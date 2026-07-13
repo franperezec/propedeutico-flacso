@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub y tu primer entorno de trabajo — Propedéutico FLACSO Ecuador</title>
+<style>
+  :root{
+    --tinta:#1e2a32;
+    --tinta-suave:#5a6a74;
+    --papel:#fafaf7;
+    --carta:#ffffff;
+    --vino:#7a1e2b;
+    --vino-claro:#f7edee;
+    --sesion:#1d4d6b;          /* identidad de esta sesión */
+    --sesion-claro:#edf3f8;
+    --comun:#1d6b45;
+    --alerta:#8a5a00;
+    --alerta-fondo:#fdf3dd;
+    --linea:#dcdcd4;
+    --mono:Consolas,"SF Mono",Menlo,"Courier New",monospace;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);
+       font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .pagina{max-width:860px;margin:0 auto;padding:0 22px 90px}
+  a{color:var(--vino)}
+  a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
+    outline:3px solid var(--sesion);outline-offset:2px;border-radius:3px}
+
+  header.doc{border-bottom:4px double var(--vino);padding:46px 0 26px;margin-bottom:8px}
+  .sello{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--vino);margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:600;font-size:2.15rem;line-height:1.18;margin:0 0 10px;
+     letter-spacing:-.01em}
+  .subtitulo{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--tinta-suave);margin:0}
+  .metadatos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding-top:16px;
+             border-top:1px solid var(--linea);font-size:.86rem;color:var(--tinta-suave)}
+  .metadatos b{color:var(--tinta);font-weight:600}
+  mark.editar{background:#fff3bf;border:1px dashed #d9a800;padding:1px 7px;border-radius:3px;
+              font-weight:600;color:#6b5300}
+
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;margin:52px 0 14px;letter-spacing:-.005em}
+  p{margin:0 0 14px}
+  .nota{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
+        border-radius:6px;padding:15px 18px;margin:18px 0;font-size:.95rem}
+  .aviso{background:var(--alerta-fondo);border:1px solid #ecd9a8;border-left:5px solid var(--alerta);
+         border-radius:6px;padding:15px 18px;margin:18px 0;font-size:.95rem}
+  .aviso b:first-child,.nota b:first-child{display:block;margin-bottom:4px}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem;background:var(--carta)}
+  th,td{border:1px solid var(--linea);padding:10px 13px;text-align:left;vertical-align:top}
+  th{background:var(--vino-claro);font-family:var(--serif);font-weight:600}
+  td code,li code,p code{font-family:var(--mono);font-size:.86em;background:#f2f2ec;
+    padding:1px 6px;border-radius:3px}
+
+  .placa{border-radius:8px 8px 0 0;color:#fff;padding:18px 24px;margin-top:60px;background:var(--sesion)}
+  .placa .letra{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+                opacity:.85;display:block;margin-bottom:4px}
+  .placa h2{color:#fff;margin:0;font-size:1.5rem}
+  .cuerpo{background:var(--carta);border:1px solid var(--linea);border-top:none;
+          border-radius:0 0 8px 8px;padding:8px 24px 24px;border-left:5px solid var(--sesion)}
+
+  .paso{display:flex;gap:16px;padding:22px 0;border-bottom:1px dashed var(--linea)}
+  .paso:last-child{border-bottom:none}
+  .num{flex:0 0 40px;height:40px;border-radius:50%;color:#fff;font-family:var(--serif);
+       font-weight:600;font-size:1.05rem;display:flex;align-items:center;justify-content:center;
+       margin-top:2px;background:var(--sesion)}
+  .paso h3{margin:2px 0 8px;font-size:1.08rem;font-weight:700}
+  .paso ol,.paso ul{margin:6px 0 10px;padding-left:22px}
+  .paso li{margin-bottom:7px}
+  .ui{font-weight:600;background:#f2f2ec;border:1px solid var(--linea);border-radius:4px;
+      padding:0 6px;font-size:.92em;white-space:nowrap}
+  .contenido{min-width:0;flex:1}
+  .os{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:#fff;
+      border-radius:3px;padding:1.5px 8px;margin-right:6px;vertical-align:1px;background:var(--tinta-suave)}
+
+  .cmd{position:relative;background:#22303a;color:#eef3f6;border-radius:6px;margin:12px 0;
+       font-family:var(--mono);font-size:.92rem;line-height:1.55}
+  .cmd pre{margin:0;padding:14px 96px 14px 16px;overflow-x:auto;white-space:pre}
+  .cmd .copiar{position:absolute;top:9px;right:9px;border:1px solid #4a5b66;background:#31424e;
+       color:#dbe6ec;font-family:var(--sans);font-size:.74rem;padding:4px 11px;border-radius:4px;cursor:pointer}
+  .cmd .copiar:hover{background:#3d5160}
+  .consola{background:#101820;color:#c9d6de;border-radius:6px;margin:12px 0;font-family:var(--mono);
+           font-size:.88rem;line-height:1.6;border:1px solid #2c3a44}
+  .consola .barra{background:#1c2831;color:#8fa3af;font-size:.72rem;letter-spacing:.12em;
+                  text-transform:uppercase;padding:6px 14px;border-radius:6px 6px 0 0}
+  .consola pre{margin:0;padding:13px 16px;overflow-x:auto}
+  .consola .tu{color:#ffd479}
+  .consola .ok{color:#7dd6a0}
+  .consola .dim{color:#6b7d88}
+
+  .conceptos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  .concepto{background:var(--carta);border:1px solid var(--linea);border-top:4px solid var(--sesion);
+            border-radius:6px;padding:14px 16px;font-size:.93rem}
+  .concepto b{font-family:var(--serif);font-size:1.02rem;display:block;margin-bottom:6px}
+  @media (max-width:640px){.conceptos{grid-template-columns:1fr}}
+
+  .checklist{background:var(--carta);border:2px solid var(--comun);border-radius:8px;
+             padding:22px 26px;margin:26px 0}
+  .checklist h2{margin-top:0}
+  .checklist label{display:flex;gap:12px;align-items:flex-start;padding:9px 0;
+                   border-bottom:1px dotted var(--linea);cursor:pointer;font-size:.98rem}
+  .checklist label:last-of-type{border-bottom:none}
+  .checklist input{width:19px;height:19px;margin-top:3px;accent-color:var(--comun);flex:0 0 auto}
+
+  details{background:var(--carta);border:1px solid var(--linea);border-radius:6px;margin:10px 0;padding:0 16px}
+  summary{cursor:pointer;font-weight:600;padding:13px 0;list-style-position:inside}
+  details[open]{padding-bottom:14px}
+  details p,details ol{margin-top:6px}
+
+  footer{margin-top:64px;border-top:1px solid var(--linea);padding-top:18px;
+         font-size:.84rem;color:var(--tinta-suave)}
+
+  @media print{
+    body{background:#fff;font-size:12.5px}
+    .copiar{display:none}
+    .placa{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    details{page-break-inside:avoid}
+    a{color:var(--tinta)}
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+<header class="doc">
+  <div class="sello">Propedéutico de Matemáticas y Programación · FLACSO Ecuador</div>
+  <h1>GitHub y tu primer entorno de trabajo</h1>
+  <p class="subtitulo">Manual de la sesión — clonaremos el repositorio del curso y crearemos tu primer entorno virtual, todos juntos y paso a paso.</p>
+  <div class="metadatos">
+    <span><b>Modalidad:</b> práctica guiada en clase</span>
+    <span><b>Fecha:</b> martes, 14 de julio de 2026</span>
+    <span><b>Trae:</b> tu computadora con todo lo de la sección «Antes de la clase»</span>
+  </div>
+</header>
+
+<!-- ================= ANTES DE LA CLASE ================= -->
+<h2>Antes de la clase — requisitos, no tarea</h2>
+<p>Esta sesión es 100&nbsp;% práctica y avanza en bloque: quien llegue sin los requisitos no podrá seguirla. <b>No repetiremos aquí ningún paso de instalación ni de creación de cuentas</b>; verifica esta lista y, si te falta algo, resuélvelo <b>antes</b> de la clase por el canal de ayuda.</p>
+
+<div class="aviso">
+  <b>⚠️ Verifica que ya tienes:</b>
+  <ul style="margin:6px 0 0;padding-left:20px">
+    <li><b>Las tres herramientas instaladas y verificadas</b> — VS&nbsp;Code, Python y Git, con las extensiones <b>Python</b> y <b>Jupyter</b> y tu identidad configurada en Git. Todo esto está, paso a paso, en el <b>Manual de instalación</b> ya publicado en Moodle.</li>
+    <li><b>Una cuenta de Gmail activa</b> — la misma que usas para Google Colab. Si no tienes: <a href="https://accounts.google.com/signup" target="_blank" rel="noopener">accounts.google.com/signup</a>.</li>
+    <li><b>Una cuenta de GitHub creada y con el correo verificado</b> — puedes registrarte con tu Gmail. Si no tienes: <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> (elige un nombre de usuario profesional, tipo <code>nombre-apellido</code>, y anota tu contraseña).</li>
+  </ul>
+</div>
+
+<!-- ================= CONCEPTOS ================= -->
+<h2>Tres ideas antes de tocar el teclado</h2>
+<div class="conceptos">
+  <div class="concepto"><b>Repositorio</b>Una carpeta de proyecto con memoria: además de los archivos, guarda todo su historial de cambios. El repositorio del curso vive en GitHub y contiene los materiales que usaremos.</div>
+  <div class="concepto"><b>Clonar</b>Descargar una copia completa de un repositorio a tu computadora. A diferencia de bajar un ZIP, la copia queda <em>conectada</em> al original: podrás traer las novedades de cada semana con un solo comando.</div>
+  <div class="concepto"><b>Entorno virtual</b>Una caja de herramientas propia de cada proyecto: las librerías que instales dentro no se mezclan con las de otros proyectos. Trabajar así desde el día uno es el estándar profesional.</div>
+</div>
+
+<!-- ================= PRÁCTICA ================= -->
+<div class="placa" id="practica">
+  <span class="letra">En la clase · lo haremos juntos</span>
+  <h2>Práctica guiada: clonar el repositorio y crear el entorno</h2>
+</div>
+<div class="cuerpo">
+
+  <div class="paso">
+    <div class="num">1</div>
+    <div class="contenido">
+      <h3>Prepara tu carpeta de trabajo</h3>
+      <ol>
+        <li>Con el explorador de archivos (Windows) o el Finder (Mac), crea dentro de <span class="ui">Documentos</span> una carpeta llamada exactamente <code>propedeutico</code>.</li>
+        <li>Abre VS&nbsp;Code y ve a <span class="ui">File → Open Folder</span> (Archivo → Abrir carpeta), selecciona <code>propedeutico</code> y pulsa <span class="ui">Seleccionar carpeta</span>.</li>
+        <li>Si VS&nbsp;Code pregunta si confías en los autores de la carpeta, marca la casilla y pulsa <span class="ui">Yes, I trust the authors</span>.</li>
+        <li>Abre la terminal integrada: menú <span class="ui">Terminal → New Terminal</span>. Fíjate en el detalle clave: la terminal se abre <b>“parada” dentro de tu carpeta</b> — la ruta antes del cursor termina en <code>propedeutico</code>. Todo lo que ejecutes ocurre ahí.</li>
+      </ol>
+      <div class="aviso"><b>⚠️ Regla de oro para nombres de carpetas y archivos</b>
+      Siempre en minúsculas y <b>sin espacios, tildes ni eñes</b> (usa guiones: <code>mi-proyecto</code>). Los espacios y caracteres especiales en las rutas son una fuente clásica de errores difíciles de detectar.</div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">2</div>
+    <div class="contenido">
+      <h3>Copia la dirección del repositorio del curso</h3>
+      <ol>
+        <li>Entra al repositorio del curso: <a href="https://github.com/franperezec/propedeutico-flacso">github.com/franperezec/propedeutico-flacso</a>.</li>
+        <li>Pulsa el botón verde <span class="ui">&lt;&gt; Code</span>, verifica que esté seleccionada la pestaña <span class="ui">HTTPS</span> y pulsa el icono de copiar junto a la dirección (termina en <code>.git</code>).</li>
+      </ol>
+      <p style="margin-bottom:0">La dirección tiene siempre la forma <code>https://github.com/usuario/repositorio.git</code>. Ese mismo botón sirve para clonar <em>cualquier</em> repositorio público de GitHub.</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">3</div>
+    <div class="contenido">
+      <h3>Clona el repositorio en tu computadora</h3>
+      <p>En la terminal de VS&nbsp;Code escribe <code>git clone</code>, un espacio, y pega la dirección (clic derecho → Pegar, o <span class="ui">Ctrl+V</span> / <span class="ui">⌘V</span>). Presiona Enter:</p>
+      <div class="cmd"><pre>git clone https://github.com/usuario/repositorio.git</pre><button class="copiar" type="button">Copiar</button></div>
+      <div class="consola">
+        <div class="barra">Resultado esperado (los números varían)</div>
+        <pre><span class="dim">~/Documentos/propedeutico&gt;</span> <span class="tu">git clone https://github.com/usuario/repositorio.git</span>
+<span class="ok">Cloning into 'repositorio'...
+remote: Enumerating objects: 87, done.
+remote: Counting objects: 100% (87/87), done.
+Receiving objects: 100% (87/87), 1.24 MiB | 2.10 MiB/s, done.
+Resolving deltas: 100% (31/31), done.</span></pre>
+      </div>
+      <ol>
+        <li>Al terminar, dentro de <code>propedeutico</code> apareció una carpeta nueva con el nombre del repositorio: es tu copia local, con todos los materiales.</li>
+        <li>Ábrela como carpeta de trabajo: <span class="ui">File → Open Folder</span>, selecciona la carpeta recién creada y confía en los autores. De aquí en adelante trabajamos <b>dentro del repositorio</b>.</li>
+      </ol>
+      <div class="nota"><b>💡 Para las próximas semanas</b>
+      Cuando el docente publique materiales nuevos, no hay que clonar otra vez: con el repositorio abierto, ejecuta en la terminal <code>git pull</code> y las novedades bajan solas. Esa es la ventaja de clonar frente a descargar un ZIP.</div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">4</div>
+    <div class="contenido">
+      <h3>Crea tu primer entorno virtual</h3>
+      <p>Lo haremos por la vía integrada de VS&nbsp;Code, que es <b>idéntica en Windows y Mac</b>:</p>
+      <ol>
+        <li>Abre la paleta de comandos: <span class="ui">Ctrl+Shift+P</span> (Windows) o <span class="ui">⇧⌘P</span> (Mac).</li>
+        <li>Escribe <b>Python: Create Environment</b> y presiona Enter.</li>
+        <li>Elige <span class="ui">Venv</span> como tipo de entorno.</li>
+        <li>Selecciona el intérprete de Python que instalaste (versión 3.1x).</li>
+        <li>Si VS&nbsp;Code detecta un archivo <code>requirements.txt</code> en el repositorio, marca su casilla: instalará automáticamente las librerías del curso. Pulsa <span class="ui">OK</span>.</li>
+        <li>Espera la notificación de que el entorno fue creado. En el explorador de archivos de VS&nbsp;Code (barra izquierda) verás una carpeta nueva llamada <code>.venv</code>: <b>esa carpeta es tu entorno</b>. No la toques ni la borres.</li>
+      </ol>
+      <p>Comprueba que está activo: abre una <b>terminal nueva</b> (<span class="ui">Terminal → New Terminal</span>). El indicador <code>(.venv)</code> al inicio de la línea confirma que estás dentro de la caja:</p>
+      <div class="consola">
+        <div class="barra">Terminal — entorno activo</div>
+        <pre><span class="ok">(.venv)</span> <span class="dim">~/Documentos/propedeutico/repositorio&gt;</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">5</div>
+    <div class="contenido">
+      <h3>Instala las librerías dentro del entorno</h3>
+      <p>Si el paso anterior no instaló nada automáticamente (no había <code>requirements.txt</code>), instala lo mínimo del curso. Con el <code>(.venv)</code> visible, este comando es <b>el mismo en Windows y Mac</b>:</p>
+      <div class="cmd"><pre>python -m pip install ipykernel matplotlib</pre><button class="copiar" type="button">Copiar</button></div>
+      <p style="margin-bottom:0"><b>¿Otra vez, si ya lo hice en el manual de instalación?</b> Sí, y es a propósito: aquello se instaló en el Python “general” de tu máquina; esto se instala <em>dentro de la caja del proyecto</em>. Cada entorno lleva sus propias herramientas — por eso los proyectos no se estorban entre sí.</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">6</div>
+    <div class="contenido">
+      <h3>Prueba de fuego: ejecuta un notebook con tu entorno</h3>
+      <ol>
+        <li>En el explorador de VS&nbsp;Code, abre el notebook del repositorio: <code>clases/clase01_conjuntos_producto_cartesiano.ipynb</code>.</li>
+        <li>Arriba a la derecha, pulsa <span class="ui">Select Kernel</span> → <span class="ui">Python Environments</span> → elige <b>.venv</b>.</li>
+        <li>Ejecuta la primera celda (botón ▶ o <span class="ui">Ctrl/⇧+Enter</span>, como en Colab).</li>
+      </ol>
+      <p style="margin-bottom:0">Si la celda corre, acabas de reproducir en tu propia máquina todo el flujo profesional: <b>repositorio clonado → entorno propio → código ejecutando</b>. Esto es exactamente lo que hacías en Colab, pero ahora el laboratorio es tuyo.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= CHECKLIST ================= -->
+<div class="checklist">
+  <h2>✅ Salida de la clase</h2>
+  <p>Antes de cerrar la laptop, verifica que puedes marcar todo:</p>
+  <label><input type="checkbox"> Cloné el repositorio del curso y lo tengo abierto como carpeta en VS&nbsp;Code.</label>
+  <label><input type="checkbox"> Existe la carpeta <code>.venv</code> dentro del repositorio.</label>
+  <label><input type="checkbox"> Al abrir una terminal nueva aparece <code>(.venv)</code> al inicio de la línea.</label>
+  <label><input type="checkbox"> Instalé (o se instalaron) las librerías sin errores en rojo.</label>
+  <label><input type="checkbox"> Ejecuté una celda del notebook de prueba con el kernel <code>.venv</code>.</label>
+  <label><input type="checkbox"> Sé que <code>git pull</code> trae los materiales nuevos de cada semana.</label>
+</div>
+
+<!-- ================= CHULETA ================= -->
+<h2>Chuleta de terminal para orientarte</h2>
+<p>Cinco comandos para no perderte nunca en la terminal. Los usaremos todo el semestre:</p>
+<table>
+  <tr><th style="width:34%">Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>pwd</code></td><td>Muestra en qué carpeta estás “parado” ahora mismo.</td></tr>
+  <tr><td><code>ls</code> &nbsp;(en Windows también sirve <code>dir</code>)</td><td>Lista el contenido de la carpeta actual.</td></tr>
+  <tr><td><code>cd nombre-carpeta</code></td><td>Entra a una carpeta que esté dentro de la actual.</td></tr>
+  <tr><td><code>cd ..</code></td><td>Regresa a la carpeta anterior (un nivel arriba).</td></tr>
+  <tr><td><code>mkdir nombre-carpeta</code></td><td>Crea una carpeta nueva donde estás parado.</td></tr>
+</table>
+
+<!-- ================= PROBLEMAS ================= -->
+<h2 id="problemas">Si algo se atasca</h2>
+
+<details>
+  <summary>P1 · <code>git clone</code> responde “repository not found” o “could not resolve host”</summary>
+  <p>Casi siempre es la dirección mal copiada o incompleta. Vuelve al repositorio en el navegador, botón <span class="ui">&lt;&gt; Code</span> → pestaña <span class="ui">HTTPS</span> → icono de copiar, y pega de nuevo. “Could not resolve host” indica además un problema de internet: verifica tu conexión (o el wifi del aula).</p>
+</details>
+
+<details>
+  <summary>P2 · <span class="os">WIN</span> “la ejecución de scripts está deshabilitada en este sistema”</summary>
+  <p>Es una protección de PowerShell que bloquea la activación del entorno. Ejecuta en la terminal:</p>
+  <div class="cmd"><pre>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</pre><button class="copiar" type="button">Copiar</button></div>
+  <p>Responde <code>S</code> (o <code>Y</code>) si pregunta, cierra esa terminal y abre una nueva. El <code>(.venv)</code> debería aparecer.</p>
+</details>
+
+<details>
+  <summary>P3 · No aparece la opción “Python: Create Environment”</summary>
+  <p>Falta la extensión <b>Python</b> de Microsoft (paso C2 del Manual de instalación) o VS&nbsp;Code necesita reiniciarse tras instalarla. Instálala desde el panel de extensiones, cierra y vuelve a abrir VS&nbsp;Code.</p>
+</details>
+
+<details>
+  <summary>P4 · La terminal no muestra <code>(.venv)</code></summary>
+  <p>Las terminales abiertas <em>antes</em> de crear el entorno no se enteran de que existe: ciérralas y abre una nueva. Si persiste, abre la paleta (<span class="ui">Ctrl+Shift+P</span> / <span class="ui">⇧⌘P</span>) → <b>Python: Select Interpreter</b> → elige el que dice <code>.venv</code>, y abre otra terminal.</p>
+</details>
+
+<details>
+  <summary>P5 · GitHub pide usuario, contraseña o autorización al clonar</summary>
+  <p>El repositorio del curso es público y clonar no debería pedir nada. Si aparece una ventana del navegador pidiendo autorizar, pulsa <span class="ui">Authorize</span> e inicia sesión con tu cuenta de GitHub. Si la terminal pide usuario y contraseña en texto, primero revisa la dirección (P1); si la dirección es correcta, avisa al docente.</p>
+</details>
+
+<details>
+  <summary>P6 · El notebook no encuentra el kernel o pide instalar ipykernel</summary>
+  <p>Pulsa <span class="ui">Select Kernel</span> → <span class="ui">Python Environments</span> → <b>.venv</b>. Si VS&nbsp;Code ofrece instalar <code>ipykernel</code>, acepta; equivale al paso 5.</p>
+</details>
+
+<details>
+  <summary>P7 · Cloné en el lugar equivocado o no encuentro la carpeta</summary>
+  <p>Ejecuta <code>pwd</code> para ver dónde estabas parado al clonar: la copia se creó ahí. No pasa nada grave: puedes <b>mover la carpeta completa</b> del repositorio a <code>Documentos/propedeutico</code> con el explorador o el Finder sin romper nada, y volver a abrirla desde VS&nbsp;Code.</p>
+</details>
+
+<!-- ================= PUENTE ================= -->
+<h2>Qué sigue</h2>
+<p>Hoy <em>recibiste</em> código: clonaste un repositorio ajeno y montaste tu laboratorio local. En la próxima sesión harás el camino inverso: crear <b>tu propio repositorio</b>, guardarle cambios con <code>git add</code> y <code>git commit</code>, y publicarlos en tu GitHub con <code>git push</code> — tu portafolio público empieza ahí.</p>
+
+<footer>
+  Propedéutico de Matemáticas y Programación · FLACSO Ecuador — Manual de sesión: GitHub y primer entorno, versión julio 2026.<br>
+  Complementa al <b>Manual de instalación</b> (VS&nbsp;Code, Python y Git), que contiene todos los pasos previos y su solución de problemas.
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.copiar').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var texto = btn.parentElement.querySelector('pre').textContent;
+    function listo(){ btn.textContent = 'Copiado ✓'; setTimeout(function(){ btn.textContent = 'Copiar'; }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(listo);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = texto; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); listo(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+});
+</script>
+</body>
+</html>
