@@ -19,3 +19,6 @@ desktop.ini
 # Editores
 .vscode/
 .idea/
+
+# Documentos Word (fuentes editables de manuales; se publica solo el PDF)
+*.docx
