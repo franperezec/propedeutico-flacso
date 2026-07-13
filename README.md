@@ -8,6 +8,8 @@
 
 Curso propedéutico para estudiantes de posgrado en ciencias sociales **sin experiencia previa en programación**. Construye, desde cero y con rigor matemático, las bases de Python y de las herramientas profesionales de trabajo (Google Colab, VS Code, Git y GitHub, entornos virtuales) que se usan en el resto de la formación.
 
+🌐 **[Sitio del curso](https://franperezec.github.io/propedeutico-flacso/)** — todos los materiales (notebooks, manuales y aplicaciones) en una sola página.
+
 📄 **[Sílabo del curso (PDF)](silabo_propedeutico_2026.pdf)** — fechas, horarios, evaluación y bibliografía. El curso se dicta del **13 de julio al 8 de agosto de 2026** (Maestría en Economía del Desarrollo, FLACSO Ecuador).
 
 ---

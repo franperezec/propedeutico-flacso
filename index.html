@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propedéutico de Matemáticas y Programación en Python — FLACSO Ecuador</title>
+<style>
+  :root{
+    --tinta:#1e2a32;
+    --tinta-suave:#5a6a74;
+    --papel:#fafaf7;
+    --carta:#ffffff;
+    --vino:#7a1e2b;
+    --vino-claro:#f7edee;
+    --sesion:#1d4d6b;
+    --sesion-claro:#edf3f8;
+    --comun:#1d6b45;
+    --linea:#dcdcd4;
+    --mono:Consolas,"SF Mono",Menlo,"Courier New",monospace;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);
+       font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .pagina{max-width:860px;margin:0 auto;padding:0 22px 90px}
+  a{color:var(--vino)}
+  a:focus-visible{outline:3px solid var(--sesion);outline-offset:2px;border-radius:3px}
+
+  header.doc{border-bottom:4px double var(--vino);padding:46px 0 26px;margin-bottom:8px}
+  .sello{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--vino);margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:600;font-size:2.15rem;line-height:1.18;margin:0 0 10px;
+     letter-spacing:-.01em}
+  .subtitulo{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--tinta-suave);margin:0}
+  .metadatos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding-top:16px;
+             border-top:1px solid var(--linea);font-size:.86rem;color:var(--tinta-suave)}
+  .metadatos b{color:var(--tinta);font-weight:600}
+
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;margin:48px 0 14px;letter-spacing:-.005em}
+  p{margin:0 0 14px}
+
+  .tarjeta{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
+           border-radius:6px;padding:18px 22px;margin:14px 0}
+  .tarjeta h3{margin:0 0 6px;font-family:var(--serif);font-size:1.12rem;font-weight:600}
+  .tarjeta p{margin:0 0 10px;font-size:.95rem;color:var(--tinta-suave)}
+  .tarjeta .enlaces{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+  .tarjeta.app{border-left-color:var(--comun)}
+  .tarjeta.inicio{border-left-color:var(--vino)}
+
+  .boton{display:inline-block;text-decoration:none;font-weight:600;font-size:.9rem;
+         padding:7px 16px;border-radius:5px;border:1px solid var(--linea)}
+  .boton.primario{background:var(--sesion);border-color:var(--sesion);color:#fff}
+  .boton.primario:hover{background:#173d56}
+  .boton.secundario{background:var(--carta);color:var(--sesion)}
+  .boton.secundario:hover{background:var(--sesion-claro)}
+  .boton.vino{background:var(--vino);border-color:var(--vino);color:#fff}
+  .boton.vino:hover{background:#621723}
+  .boton.verde{background:var(--comun);border-color:var(--comun);color:#fff}
+  .boton.verde:hover{background:#175538}
+
+  .etiqueta{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+            text-transform:uppercase;color:#fff;background:var(--tinta-suave);border-radius:3px;
+            padding:2px 9px;margin-bottom:8px}
+  .etiqueta.clase{background:var(--sesion)}
+  .etiqueta.manual{background:var(--vino)}
+  .etiqueta.app{background:var(--comun)}
+
+  .nota{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
+        border-radius:6px;padding:13px 18px;margin:18px 0;font-size:.92rem;color:var(--tinta-suave)}
+
+  footer{margin-top:64px;border-top:1px solid var(--linea);padding-top:18px;
+         font-size:.84rem;color:var(--tinta-suave)}
+  footer p{margin:0 0 6px}
+
+  @media (max-width:640px){
+    h1{font-size:1.7rem}
+    .tarjeta .enlaces{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+<header class="doc">
+  <div class="sello">Propedéutico de Matemáticas y Programación · FLACSO Ecuador</div>
+  <h1>Propedéutico de Matemáticas y Programación en Python</h1>
+  <p class="subtitulo">Materiales del curso — notebooks, manuales y aplicaciones, en un solo lugar.</p>
+  <div class="metadatos">
+    <span><b>Fechas:</b> 13 de julio – 8 de agosto de 2026</span>
+    <span><b>Docentes:</b> Francisco Pérez M. · David Villamar C.</span>
+    <span><b>Programa:</b> Maestría en Economía del Desarrollo</span>
+  </div>
+</header>
+
+<h2>Empieza aquí</h2>
+<div class="tarjeta inicio">
+  <h3>Temario completo y guía del repositorio</h3>
+  <p>El repositorio en GitHub contiene el temario de las 24 sesiones, las dos vías de trabajo (Colab o VS&nbsp;Code) y las instrucciones para clonar y actualizar los materiales.</p>
+  <div class="enlaces">
+    <a class="boton vino" href="https://github.com/franperezec/propedeutico-flacso">Repositorio en GitHub</a>
+    <a class="boton secundario" href="silabo_propedeutico_2026.pdf">Sílabo del curso (PDF)</a>
+  </div>
+</div>
+
+<h2>Clases</h2>
+<div class="tarjeta">
+  <span class="etiqueta clase">Clase 1 · lun 13-jul</span>
+  <h3>Conjuntos y producto cartesiano — Python y Google Colab desde cero</h3>
+  <p>Notebook de la primera sesión. Ábrelo en Colab (no requiere instalar nada) y guarda tu propia copia: <i>Archivo → Guardar una copia en Drive</i>.</p>
+  <div class="enlaces">
+    <a class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/clase01_conjuntos_producto_cartesiano.ipynb">Abrir en Colab</a>
+    <a class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/clase01_conjuntos_producto_cartesiano.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+<p class="nota">Los notebooks de las siguientes sesiones se publicarán aquí a medida que avance el curso.</p>
+
+<h2>Manuales</h2>
+<div class="tarjeta">
+  <span class="etiqueta manual">Clase 2 · mar 14-jul</span>
+  <h3>GitHub y tu primer entorno de trabajo</h3>
+  <p>Práctica guiada: clonar el repositorio del curso y crear tu primer entorno virtual en VS&nbsp;Code, paso a paso.</p>
+  <div class="enlaces">
+    <a class="boton primario" href="manuales/manual_clase2_github_primer_entorno.html">Leer en el navegador</a>
+    <a class="boton secundario" href="manuales/manual_clase2_github_primer_entorno.pdf">Descargar PDF</a>
+  </div>
+</div>
+
+<h2>Aplicaciones interactivas</h2>
+<div class="tarjeta app">
+  <span class="etiqueta app">Sesiones 1–2 · lógica proposicional</span>
+  <h3>Tablas de Verdad</h3>
+  <p>Genera la tabla de verdad de una expresión lógica: AND, OR, NOT, implicación (<code>-&gt;</code>) y bicondicional (<code>&lt;-&gt;</code>). Se abre en el navegador, sin instalar nada.</p>
+  <div class="enlaces">
+    <a class="boton verde" href="https://true-table-prope-1--true-table-prope.us-east4.hosted.app/">Abrir aplicación</a>
+  </div>
+</div>
+
+<footer>
+  <p><b>Dudas del curso:</b> usa el foro de la asignatura en Moodle o el canal indicado en clase.</p>
+  <p><b>Docentes:</b> Francisco Pérez M. (<a href="mailto:fperezfl@flacso.edu.ec">fperezfl@flacso.edu.ec</a>) · David Villamar C. (<a href="mailto:davillamarfl@flacso.edu.ec">davillamarfl@flacso.edu.ec</a>)</p>
+  <p>Materiales bajo licencia <a href="https://github.com/franperezec/propedeutico-flacso/blob/main/LICENSE">MIT</a> · FLACSO Ecuador · 2026</p>
+</footer>
+
+</div>
+</body>
+</html>
