@@ -237,6 +237,38 @@ Resolving deltas: 100% (31/31), done.</span></pre>
       </div>
       <div class="nota"><b>💡 Activar y desactivar el entorno a mano</b>
       Las terminales nuevas de VS&nbsp;Code activan el entorno solas. Pero si abres una terminal fuera de VS&nbsp;Code, o el <code>(.venv)</code> no aparece, actívalo tú desde la carpeta del repositorio — <span class="os">WIN</span> <code>.venv\Scripts\activate</code> · <span class="os">MAC</span> <code>source .venv/bin/activate</code> — y para salir del entorno, en ambos sistemas: <code>deactivate</code>. Si Windows responde «la ejecución de scripts está deshabilitada», la solución está en P2.</div>
+      <details>
+        <summary>Vía alternativa · Crear el entorno desde la terminal</summary>
+        <p>El mismo resultado sin la paleta de comandos. Primero, <b>parado dentro de la carpeta del repositorio clonado</b> (la terminal integrada de VS&nbsp;Code ya se abre ahí), crea el entorno — <span class="os">WIN</span>:</p>
+        <div class="cmd"><pre>python -m venv .venv</pre><button class="copiar" type="button">Copiar</button></div>
+        <p><span class="os">MAC</span> (fuera del entorno, el Python moderno se llama <code>python3</code>):</p>
+        <div class="cmd"><pre>python3 -m venv .venv</pre><button class="copiar" type="button">Copiar</button></div>
+        <p>Después actívalo — <span class="os">WIN</span>:</p>
+        <div class="cmd"><pre>.venv\Scripts\activate</pre><button class="copiar" type="button">Copiar</button></div>
+        <p><span class="os">MAC</span>:</p>
+        <div class="cmd"><pre>source .venv/bin/activate</pre><button class="copiar" type="button">Copiar</button></div>
+        <p>Cuando aparezca el <code>(.venv)</code> al inicio de la línea, listo. Por esta vía no hay casilla de <code>requirements.txt</code>, así que nada se instala solo: el paso 5 es obligatorio. Si Windows responde «la ejecución de scripts está deshabilitada», la solución está en P2.</p>
+      </details>
+      <p><b>Última comprobación del paso:</b> con el <code>(.venv)</code> visible, pide la lista de librerías instaladas. El comando es el mismo en Windows y Mac:</p>
+      <div class="cmd"><pre>pip list</pre><button class="copiar" type="button">Copiar</button></div>
+      <p>Si al crear el entorno marcaste la casilla de <code>requirements.txt</code>, en la lista deben aparecer las siete librerías del curso — <code>ipykernel</code>, <code>matplotlib</code>, <code>numpy</code>, <code>openpyxl</code>, <code>pandas</code>, <code>scipy</code> y <code>sympy</code> — junto a otras que se instalan solas como acompañantes:</p>
+      <div class="consola">
+        <div class="barra">Resultado esperado (fragmento — las versiones pueden variar)</div>
+        <pre><span class="ok">(.venv)</span> <span class="dim">~/Documentos/propedeutico/repositorio&gt;</span> <span class="tu">pip list</span>
+Package          Version
+---------------- -----------
+<span class="dim">…</span>
+ipykernel        7.3.0
+matplotlib       3.11.0
+numpy            2.5.1
+openpyxl         3.1.5
+pandas           3.0.3
+<span class="dim">…</span>
+scipy            1.18.0
+sympy            1.14.0
+<span class="dim">…</span></pre>
+      </div>
+      <p style="margin-bottom:0">¿No aparecen, o la lista sale casi vacía? No pasa nada: el paso 5 lo resuelve con un solo comando.</p>
     </div>
   </div>
 
@@ -244,8 +276,9 @@ Resolving deltas: 100% (31/31), done.</span></pre>
     <div class="num">5</div>
     <div class="contenido">
       <h3>Instala las librerías dentro del entorno</h3>
-      <p>Si el paso anterior no instaló nada automáticamente (no había <code>requirements.txt</code>), instala lo mínimo del curso. Con el <code>(.venv)</code> visible, este comando es <b>el mismo en Windows y Mac</b>:</p>
-      <div class="cmd"><pre>python -m pip install ipykernel matplotlib</pre><button class="copiar" type="button">Copiar</button></div>
+      <p>Si al crear el entorno marcaste la casilla de <code>requirements.txt</code>, este paso ya ocurrió solo — y <code>pip list</code> te lo confirmó. Pero si no la marcaste, creaste el entorno por la terminal, o algo falló y las librerías no aparecen, esta es la red de seguridad. Con el <code>(.venv)</code> visible, este comando es <b>el mismo en Windows y Mac</b>:</p>
+      <div class="cmd"><pre>python -m pip install -r requirements.txt</pre><button class="copiar" type="button">Copiar</button></div>
+      <p><code>requirements.txt</code> es la lista de compras del proyecto: un archivo que vive en el repositorio y declara las siete librerías del curso con sus versiones exactas. Ese único comando las instala todas de una vez (la terminal ya está parada en la carpeta del repositorio, donde vive el archivo) — y como viaja con el repositorio, cualquiera que lo clone puede reconstruir el mismo entorno.</p>
       <p style="margin-bottom:0"><b>¿Por qué “dentro del entorno”?</b> Con el <code>(.venv)</code> activo, las librerías se instalan <em>dentro de la caja del proyecto</em>, no en el Python “general” de tu máquina. Cada entorno lleva sus propias herramientas — por eso los proyectos no se estorban entre sí.</p>
     </div>
   </div>
@@ -328,6 +361,27 @@ Resolving deltas: 100% (31/31), done.</span></pre>
   <summary>P7 · Cloné en el lugar equivocado o no encuentro la carpeta</summary>
   <p>Ejecuta <code>pwd</code> para ver dónde estabas parado al clonar: la copia se creó ahí. No pasa nada grave: puedes <b>mover la carpeta completa</b> del repositorio a <code>Documentos/propedeutico</code> con el explorador o el Finder sin romper nada, y volver a abrirla desde VS&nbsp;Code.</p>
 </details>
+
+<!-- ================= AYUDA CON IA ================= -->
+<div class="nota" id="ayuda-ia"><b>💡 ¿Tu problema no está en la lista? Pídele ayuda a una IA</b>
+Un asistente de IA (ChatGPT, Claude, Gemini o Copilot) resuelve muy bien este tipo de atascos <b>si le das contexto suficiente</b>. Copia esta plantilla, rellena los huecos [entre corchetes] y pégala en el chat:
+<div class="cmd"><pre>Estoy siguiendo un manual del curso propedéutico de FLACSO
+y me atasqué en [paso o sección del manual donde estabas].
+Mi sistema operativo es [Windows o Mac].
+Escribí este comando o código:
+[pega aquí exactamente lo que escribiste]
+Y obtuve este mensaje de error o problema:
+[pega aquí el mensaje completo, copiado desde la terminal]
+Por favor: primero explícame por qué ocurre el problema,
+en lenguaje sencillo (no tengo experiencia en programación),
+y después dame los pasos para resolverlo, uno por uno.</pre><button class="copiar" type="button">Copiar</button></div>
+Tres consejos para que la respuesta sirva:
+<ul>
+  <li><strong>Copia el error completo como texto</strong> — selecciónalo en la terminal y cópialo — mejor que una captura de pantalla o un fragmento suelto.</li>
+  <li><strong>Lee cada comando que la IA te sugiera antes de ejecutarlo</strong>; si no entiendes qué hace, pregúntale. Nunca ejecutes a ciegas comandos que borren archivos o carpetas.</li>
+  <li>Si la primera respuesta no funciona, <strong>cuéntale qué pasó al intentarlo</strong>: la conversación de ida y vuelta es parte normal del proceso.</li>
+</ul>
+</div>
 
 <!-- ================= PUENTE ================= -->
 <h2>Qué sigue</h2>
