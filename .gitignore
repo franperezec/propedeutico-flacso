@@ -22,3 +22,6 @@ desktop.ini
 
 # Documentos Word (fuentes editables de manuales; se publica solo el PDF)
 *.docx
+
+# Guía local para Claude Code (no se publica)
+CLAUDE.md
