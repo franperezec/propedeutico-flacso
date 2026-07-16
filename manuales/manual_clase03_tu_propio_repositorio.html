@@ -131,7 +131,7 @@
 <header class="doc">
   <div class="sello">Propedéutico de Matemáticas y Programación · FLACSO Ecuador</div>
   <h1>Tu propio repositorio en GitHub</h1>
-  <p class="subtitulo">Manual de la sesión — crearás tu repositorio, guardarás tus primeros cambios con <code>git add</code> y <code>git commit</code>, y los publicarás con <code>git push</code>.</p>
+  <p class="subtitulo">Manual de la sesión — crearás tu repositorio desde cero, guardarás tus primeros cambios con <code>git add</code> y <code>git commit</code>, y los publicarás con <code>git push</code>.</p>
   <div class="metadatos">
     <span><b>Modalidad:</b> práctica guiada en clase</span>
     <span><b>Fecha:</b> miércoles, 15 de julio de 2026</span>
@@ -147,7 +147,7 @@
   <b>⚠️ Verifica que ya tienes:</b>
   <ul style="margin:6px 0 0;padding-left:20px">
     <li><b>Las tres herramientas funcionando</b> — VS&nbsp;Code, Python y Git, con tu identidad configurada en Git (tu nombre y tu correo). Todo está en el <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a>.</li>
-    <li><b>La práctica de la clase 2 completa</b> — el repositorio del curso clonado en <code>Documentos/propedeutico</code> y tu entorno <code>.venv</code> creado. Si faltaste o algo quedó a medias, sigue el <a href="manual_clase2_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a>.</li>
+    <li><b>La práctica de la clase 2 completa</b> — el repositorio del curso clonado en <code>Documentos/propedeutico</code> y tu entorno <code>.venv</code> creado. Si faltaste o algo quedó a medias, sigue el <a href="manual_clase02_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a>.</li>
     <li><b>Tu cuenta de GitHub con el correo verificado</b> — hoy publicarás en ella. Comprueba que puedes iniciar sesión en <a href="https://github.com/login" target="_blank" rel="noopener">github.com/login</a>.</li>
   </ul>
 </div>
@@ -170,49 +170,106 @@
   <div class="paso">
     <div class="num">1</div>
     <div class="contenido">
-      <h3>Crea tu repositorio en GitHub</h3>
+      <h3>Crea una carpeta vacía para tu repositorio</h3>
       <ol>
-        <li>Entra a <a href="https://github.com" target="_blank" rel="noopener">github.com</a> con tu cuenta y pulsa el botón <span class="ui">+</span> (arriba a la derecha) → <span class="ui">New repository</span>.</li>
-        <li>En <span class="ui">Repository name</span> escribe exactamente <code>mi-propedeutico</code> — minúsculas, sin espacios, tildes ni eñes: la regla de oro de la clase 2 también aplica aquí.</li>
-        <li>En <span class="ui">Description</span> (opcional) puedes poner: <code>Bitácora del propedéutico — FLACSO Ecuador</code>.</li>
-        <li>Deja la visibilidad en <span class="ui">Public</span>: este repositorio es el inicio de tu portafolio.</li>
-        <li>Marca la casilla <span class="ui">Add a README file</span> — así el repositorio nace con un primer archivo (y un primer commit hecho por GitHub).</li>
-        <li>Pulsa <span class="ui">Create repository</span>. GitHub te lleva a la página de tu repositorio nuevo.</li>
+        <li>Abre el explorador de archivos (Windows) o el Finder (Mac) y entra a la carpeta <code>propedeutico</code> de tus Documentos — la carpeta madre de la clase 2, donde ya vive <code>propedeutico-flacso</code>.</li>
+        <li>Ahí dentro crea una carpeta nueva y nómbrala exactamente <code>mi-propedeutico</code> — minúsculas, sin espacios, tildes ni eñes: la regla de oro de la clase 2 también aplica aquí.</li>
       </ol>
-      <p style="margin-bottom:0">Fíjate en la dirección del navegador: <code>github.com/tu-usuario/mi-propedeutico</code>. Ese es <b>tu</b> espacio público; el del curso era el del docente.</p>
+      <div class="consola">
+        <div class="barra">Cómo debe quedar</div>
+        <pre><span class="dim">Documentos/propedeutico/</span>
+├── propedeutico-flacso/   <span class="dim">← el del curso: solo lees y haces git pull</span>
+└── mi-propedeutico/       <span class="dim">← el tuyo: vacío por ahora — hoy lo llenas</span></pre>
+      </div>
+      <div class="aviso"><b>⚠️ Un repositorio nunca va dentro de otro</b>
+      Crea la carpeta directamente en <code>propedeutico</code>, como hermana de <code>propedeutico-flacso</code> — nunca adentro. Si quedó anidada, revisa P6 para moverla.</div>
+      <p style="margin-bottom:0">Ahora ábrela en VS&nbsp;Code: <span class="ui">File → Open Folder</span> (Archivo → Abrir carpeta) → <code>mi-propedeutico</code> → confía en los autores (eres tú). El explorador de VS&nbsp;Code se verá vacío — correcto: todavía no hay nada.</p>
     </div>
   </div>
 
   <div class="paso">
     <div class="num">2</div>
     <div class="contenido">
-      <h3>Clónalo junto al repositorio del curso</h3>
+      <h3>Crea tu repositorio en GitHub — vacío, esa es la clave</h3>
       <ol>
-        <li>En la página de tu repositorio, pulsa el botón verde <span class="ui">&lt;&gt; Code</span> → pestaña <span class="ui">HTTPS</span> → icono de copiar (igual que en la clase 2).</li>
-        <li>Abre VS&nbsp;Code y ve a <span class="ui">File → Open Folder</span> (Archivo → Abrir carpeta), selecciona la carpeta <code>propedeutico</code> de tus Documentos (la carpeta madre, <b>no</b> la del repositorio del curso).</li>
-        <li>Abre una terminal (<span class="ui">Terminal → New Terminal</span>) y verifica que la ruta antes del cursor termina en <code>propedeutico</code>.</li>
-        <li>Escribe <code>git clone</code>, un espacio, y pega la dirección que copiaste en el punto 1 (clic derecho → Pegar, o <span class="ui">Ctrl+V</span> / <span class="ui">⌘V</span>). Presiona Enter. Quedará así, pero con <b>tu</b> nombre de usuario donde el ejemplo dice <code>tu-usuario</code>:</li>
+        <li>Entra a <a href="https://github.com" target="_blank" rel="noopener">github.com</a> con tu cuenta y pulsa el botón <span class="ui">+</span> (arriba a la derecha) → <span class="ui">New repository</span>.</li>
+        <li>En <span class="ui">Repository name</span> escribe exactamente <code>mi-propedeutico</code> — el mismo nombre que la carpeta del paso 1.</li>
+        <li>En <span class="ui">Description</span> (opcional) puedes poner: <code>Bitácora del propedéutico — FLACSO Ecuador</code>.</li>
+        <li>Deja la visibilidad en <span class="ui">Public</span>: este repositorio es el inicio de tu portafolio.</li>
+        <li><b>No marques nada</b> en la sección <span class="ui">Initialize this repository with</span>: sin <span class="ui">README</span>, sin <span class="ui">.gitignore</span>, sin licencia. El repositorio debe nacer vacío, porque todo su contenido nacerá en tu computadora y viajará a GitHub con tu primer push.</li>
+        <li>Pulsa <span class="ui">Create repository</span>.</li>
       </ol>
-      <div class="cmd"><pre>git clone https://github.com/tu-usuario/mi-propedeutico.git</pre><button class="copiar" type="button">Copiar</button></div>
-      <p>Al terminar, <code>propedeutico</code> contiene dos carpetas hermanas: la del curso y la tuya:</p>
-      <div class="consola">
-        <div class="barra">Tu carpeta de trabajo, a partir de hoy</div>
-        <pre><span class="dim">Documentos/propedeutico/</span>
-├── propedeutico-flacso/   <span class="dim">← el del curso: solo lees y haces git pull</span>
-└── mi-propedeutico/       <span class="dim">← el tuyo: aquí escribes, haces commit y push</span></pre>
-      </div>
-      <div class="aviso"><b>⚠️ Un repositorio nunca va dentro de otro</b>
-      Clona siempre desde la carpeta madre <code>propedeutico</code>. Si la terminal estaba «parada» dentro de <code>propedeutico-flacso</code> al clonar, tu repositorio quedó anidado dentro del repositorio del curso — revisa P6 para moverlo.</div>
-      <p style="margin-bottom:0">Ahora abre <b>tu</b> repositorio como carpeta de trabajo: <span class="ui">File → Open Folder</span> → <code>mi-propedeutico</code> → confía en los autores (eres tú).</p>
+      <p>Como el repositorio está vacío, GitHub no te muestra archivos sino una página de <span class="ui">Quick setup</span> con instrucciones. Localiza el bloque titulado <span class="ui">…or create a new repository on the command line</span>: son los comandos que usarás en el siguiente paso, ya con <b>tu</b> nombre de usuario en la dirección. <b>Deja esta pestaña abierta.</b></p>
+      <p style="margin-bottom:0">Fíjate en la dirección del navegador: <code>github.com/tu-usuario/mi-propedeutico</code>. Ese es <b>tu</b> espacio público; el del curso era el del docente.</p>
     </div>
   </div>
 
   <div class="paso">
     <div class="num">3</div>
     <div class="contenido">
+      <h3>En la terminal: párate en tu carpeta y pega los comandos de GitHub</h3>
+      <ol>
+        <li>Vuelve a VS&nbsp;Code y abre una terminal (<span class="ui">Terminal → New Terminal</span>). Como tu carpeta de trabajo es <code>mi-propedeutico</code>, la terminal nace «parada» exactamente ahí. <b>Compruébalo:</b> la ruta antes del cursor debe terminar en <code>mi-propedeutico</code>.</li>
+        <li>En la pestaña de GitHub, copia el bloque <span class="ui">…or create a new repository on the command line</span> completo, con el icono de copiar que aparece a su derecha. <b>Cópialo de tu página de GitHub, no de este manual:</b> el de GitHub ya trae tu nombre de usuario en la dirección.</li>
+        <li>Pégalo en la terminal (clic derecho → Pegar, o <span class="ui">Ctrl+V</span> / <span class="ui">⌘V</span>). Si VS&nbsp;Code pregunta si de verdad quieres pegar varias líneas, acepta. Al final presiona Enter: la última línea queda escrita pero aún sin ejecutar.</li>
+      </ol>
+      <div class="nota"><b>💡 <code>cd</code>: así se mueve uno por las carpetas</b>
+      La terminal siempre está parada en una carpeta, y los comandos actúan ahí. Para moverte se usa <code>cd</code> (<i>change directory</i>): escribe <code>cd</code>, un espacio y la ruta de la carpeta destino. Un truco que no falla: escribe <code>cd </code> y <strong>arrastra la carpeta</strong> desde el explorador o el Finder hasta la terminal — la ruta se escribe sola; presiona Enter y confirma dónde quedaste con <code>pwd</code>. Hoy VS&nbsp;Code te ahorra el viaje: al abrir <code>mi-propedeutico</code> como carpeta de trabajo, su terminal ya nace parada ahí.</div>
+      <div class="consola">
+        <div class="barra">El bloque que copiarás de GitHub (donde dice tu-usuario, el tuyo dirá tu nombre)</div>
+        <pre>echo "# mi-propedeutico" &gt;&gt; README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/<span class="tu">tu-usuario</span>/mi-propedeutico.git
+git push -u origin main</pre>
+      </div>
+      <p>Siete líneas que hacen todo el trabajo de fundación. Léelas antes de ejecutarlas — cada una tiene un oficio:</p>
+      <table>
+        <tr><th style="width:44%">Comando</th><th>Su oficio</th></tr>
+        <tr><td><code>echo "# mi-propedeutico" &gt;&gt; README.md</code></td><td>Crea el archivo <code>README.md</code> con una línea de título — la portada de tu repositorio.</td></tr>
+        <tr><td><code>git init</code></td><td>Convierte la carpeta en un repositorio Git: nace el álbum donde se guardarán las fotografías.</td></tr>
+        <tr><td><code>git add README.md</code></td><td>Prepara el archivo para la primera fotografía.</td></tr>
+        <tr><td><code>git commit -m "first commit"</code></td><td>La toma: el primer commit de tu historial.</td></tr>
+        <tr><td><code>git branch -M main</code></td><td>Nombra <code>main</code> a la rama principal del historial (y de paso resuelve el aviso <code>hint:</code> que quizá imprimió <code>git init</code>).</td></tr>
+        <tr><td><code>git remote add origin …</code></td><td>Anota la dirección de tu repositorio en GitHub bajo el alias <code>origin</code> — por eso esta línea lleva <b>tu</b> usuario.</td></tr>
+        <tr><td><code>git push -u origin main</code></td><td>Publica: sube el commit a GitHub. El <code>-u</code> deja la ruta memorizada; desde ahora bastará <code>git push</code>.</td></tr>
+      </table>
+      <div class="aviso"><b>⚠️ En el último comando, GitHub te pedirá identificarte</b>
+      Es normal y ocurre una sola vez — y por eso el push se hace <b>siempre desde la terminal integrada de VS&nbsp;Code</b>, no desde la Terminal del sistema. <span class="os">WIN</span> Aparece una ventanita de <i>Git Credential Manager</i> (<span class="ui">Connect to GitHub</span>): pulsa <span class="ui">Sign in with your browser</span> y entonces se abre el navegador — inicia sesión con tu cuenta de GitHub y pulsa <span class="ui">Authorize</span>. <span class="os">MAC</span> Primero VS&nbsp;Code muestra un pequeño aviso pidiendo permiso — acéptalo (<span class="ui">Allow</span>) y después se abre el navegador para autorizar. Tu computadora quedará autorizada para los siguientes push. Si la terminal se queda esperando o falla, revisa P2 y P3.</div>
+      <div class="consola">
+        <div class="barra">Resultado esperado, resumido (el código del commit varía)</div>
+        <pre><span class="dim">~/Documentos/propedeutico/mi-propedeutico&gt;</span> <span class="tu">(pegas el bloque y presionas Enter)</span>
+<span class="ok">Initialized empty Git repository in .../mi-propedeutico/.git/</span>
+<span class="ok">[master (root-commit) f7a8b9c] first commit</span>  <span class="dim">← dirá master (o main); la línea git branch -M main la renombra enseguida</span>
+<span class="ok"> 1 file changed, 1 insertion(+)
+ create mode 100644 README.md</span>
+<span class="dim">… (aquí te identificas con GitHub — ver aviso arriba) …</span>
+<span class="ok">Writing objects: 100% (3/3), 230 bytes | 230.00 KiB/s, done.
+To https://github.com/tu-usuario/mi-propedeutico.git
+ * [new branch]      main -&gt; main
+branch 'main' set up to track 'origin/main'.</span></pre>
+      </div>
+      <p style="margin-bottom:0">¿Alguna línea falló a medio camino? Identifica cuál por su mensaje: «Please tell me who you are» → P1; la autorización no llega o falla → P2 y P3; «remote origin already exists» → P6; «rejected … fetch first» → P8. Resuelto el problema, repite desde la línea que falló (normalmente <code>git commit -m "first commit"</code> y <code>git push -u origin main</code>).</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">4</div>
+    <div class="contenido">
+      <h3>Abre tu repositorio en GitHub</h3>
+      <p>Vuelve a la pestaña de GitHub y actualiza la página (<span class="ui">F5</span> / <span class="ui">⌘R</span>). La página de <span class="ui">Quick setup</span> desapareció: en su lugar está tu repositorio de verdad, con <code>README.md</code> mostrando el título <b>mi-propedeutico</b> y el contador marcando <b>1 commit</b> — tu «first commit», con tu nombre y tu fecha.</p>
+      <p style="margin-bottom:0">Detente un segundo en lo que acaba de pasar: la carpeta de tu computadora y esta página son <b>el mismo repositorio</b>, conectados. Todo lo que fotografíes con <code>commit</code> y empujes con <code>push</code> aparecerá aquí. Vamos a comprobarlo creando tu primer archivo de verdad.</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="num">5</div>
+    <div class="contenido">
       <h3>Crea tu primer archivo: la bitácora del curso</h3>
       <ol>
-        <li>En el explorador de VS&nbsp;Code (barra izquierda), haz clic derecho en el área vacía bajo la lista de archivos → <span class="ui">New File</span> (Nuevo archivo) y nómbralo <code>bitacora.md</code> — el nombre sin tildes; el <em>contenido</em> puede llevarlas con total normalidad. Debe quedar al mismo nivel que <code>README.md</code>.</li>
+        <li>En el explorador de VS&nbsp;Code (barra izquierda), haz clic derecho en el área vacía bajo la lista de archivos → <span class="ui">New File</span> (Nuevo archivo) y nómbralo <code>bitacora.md</code> — el nombre sin tildes; el <em>contenido</em> puede llevarlas con total normalidad. Debe quedar al mismo nivel que <code>README.md</code> (el archivo que creó la línea <code>echo</code> del paso 3).</li>
         <li>Escribe algo como esto (o tu propia versión) y <b>guarda</b> con <span class="ui">Ctrl+S</span> / <span class="ui">⌘S</span>:</li>
       </ol>
       <div class="cmd"><pre># Bitácora del propedéutico
@@ -226,10 +283,10 @@ editar → add → commit → push.</pre><button class="copiar" type="button">Co
   </div>
 
   <div class="paso">
-    <div class="num">4</div>
+    <div class="num">6</div>
     <div class="contenido">
       <h3><code>git status</code> — pregunta a Git qué ve</h3>
-      <p>Abre una terminal nueva (<span class="ui">Terminal → New Terminal</span>): como tu carpeta de trabajo ahora es tu repositorio, la ruta antes del cursor termina en <code>mi-propedeutico</code>. Ahí escribe el comando. <code>git status</code> no cambia nada: solo informa — úsalo todo el tiempo, antes y después de cada paso:</p>
+      <p>Vuelve a la terminal del paso 3 (si la cerraste, abre otra: <span class="ui">Terminal → New Terminal</span> — nace parada en tu repositorio). <code>git status</code> no cambia nada: solo informa — úsalo todo el tiempo, antes y después de cada paso:</p>
       <div class="cmd"><pre>git status</pre><button class="copiar" type="button">Copiar</button></div>
       <div class="consola">
         <div class="barra">Resultado esperado</div>
@@ -248,7 +305,7 @@ nothing added to commit but untracked files present (use "git add" to track)</pr
   </div>
 
   <div class="paso">
-    <div class="num">5</div>
+    <div class="num">7</div>
     <div class="contenido">
       <h3><code>git add</code> — prepara la fotografía</h3>
       <p>Coloca el archivo en la bandeja de preparación:</p>
@@ -269,7 +326,7 @@ Changes to be committed:
   </div>
 
   <div class="paso">
-    <div class="num">6</div>
+    <div class="num">8</div>
     <div class="contenido">
       <h3><code>git commit</code> — toma la fotografía</h3>
       <p>El commit guarda lo preparado en el historial, con un mensaje entre comillas que explica el cambio:</p>
@@ -288,13 +345,13 @@ Changes to be committed:
   </div>
 
   <div class="paso">
-    <div class="num">7</div>
+    <div class="num">9</div>
     <div class="contenido">
       <h3><code>git push</code> — publica en GitHub</h3>
       <p>Hasta aquí, el commit existe solo en tu computadora. Súbelo:</p>
       <div class="cmd"><pre>git push</pre><button class="copiar" type="button">Copiar</button></div>
-      <div class="aviso"><b>⚠️ La primera vez, GitHub te pedirá identificarte</b>
-      Es normal y ocurre una sola vez — y por eso el push se hace <b>siempre desde la terminal integrada de VS&nbsp;Code</b>, no desde la Terminal del sistema. <span class="os">WIN</span> Se abrirá una ventana del navegador (la lanza <i>Git Credential Manager</i>): inicia sesión con tu cuenta de GitHub y pulsa <span class="ui">Authorize</span>. <span class="os">MAC</span> Primero VS&nbsp;Code muestra un pequeño aviso pidiendo permiso — acéptalo (<span class="ui">Allow</span>) y después se abre el navegador para autorizar. Tu computadora quedará autorizada para los siguientes push. Si la terminal se queda esperando o falla, revisa P2 y P3.</div>
+      <div class="nota"><b>💡 Esta vez sin trámites</b>
+      GitHub ya no te pedirá identificarte: tu computadora quedó autorizada con el push del paso 3. Y como aquel primer push llevó <code>-u</code>, ahora basta <code>git push</code> a secas — Git ya sabe la ruta. Si aun así te pide algo, revisa P2 y P3.</div>
       <div class="consola">
         <div class="barra">Resultado esperado (los números varían)</div>
         <pre><span class="dim">~/Documentos/propedeutico/mi-propedeutico&gt;</span> <span class="tu">git push</span>
@@ -306,14 +363,14 @@ Writing objects: 100% (3/3), 428 bytes | 428.00 KiB/s, done.
 Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (0/0), done.
 To https://github.com/tu-usuario/mi-propedeutico.git
-   e5f6a7b..a1b2c3d  main -&gt; main</span></pre>
+   f7a8b9c..a1b2c3d  main -&gt; main</span></pre>
       </div>
-      <p style="margin-bottom:0">Ahora ve al navegador, entra a <code>github.com/tu-usuario/mi-propedeutico</code> y actualiza la página: ahí está <code>bitacora.md</code>, y el contador dice <b>2 commits</b> (el README de GitHub y el tuyo). Acabas de publicar código por primera vez.</p>
+      <p style="margin-bottom:0">Ahora ve al navegador, entra a <code>github.com/tu-usuario/mi-propedeutico</code> y actualiza la página: ahí está <code>bitacora.md</code>, y el contador dice <b>2 commits</b> (el «first commit» del paso 3 y el de tu bitácora). El ciclo completo — editar, <code>add</code>, <code>commit</code>, <code>push</code> — acaba de funcionar de principio a fin, hecho por ti.</p>
     </div>
   </div>
 
   <div class="paso">
-    <div class="num">8</div>
+    <div class="num">10</div>
     <div class="contenido">
       <h3>El ciclo completo, una vez más</h3>
       <p>Lo que convierte esto en hábito es repetirlo. Edita <code>bitacora.md</code> — añade al final una línea nueva, por ejemplo <i>«Publiqué mi primer repositorio.»</i> — guarda con <span class="ui">Ctrl+S</span> / <span class="ui">⌘S</span>, y recorre el ciclo entero:</p>
@@ -333,8 +390,8 @@ git push</pre><button class="copiar" type="button">Copiar</button></div>
   <h2>✅ Salida de la clase</h2>
   <p>Antes de cerrar la laptop, verifica que puedes marcar todo:</p>
   <label><input type="checkbox"> Mi repositorio <code>mi-propedeutico</code> existe en mi cuenta de GitHub y es público.</label>
-  <label><input type="checkbox"> Lo cloné junto al repositorio del curso (carpetas hermanas, no anidadas) y lo tengo abierto en VS&nbsp;Code.</label>
-  <label><input type="checkbox"> Hice al menos <b>dos commits propios</b> con mensajes descriptivos.</label>
+  <label><input type="checkbox"> Su carpeta vive en mi computadora junto a la del curso (hermanas, no anidadas), conectada con GitHub y abierta en VS&nbsp;Code.</label>
+  <label><input type="checkbox"> Hice al menos <b>tres commits propios</b>: el «first commit» y dos más con mensajes descriptivos.</label>
   <label><input type="checkbox"> Mis cambios se ven en la página de mi repositorio en github.com, desde el navegador.</label>
   <label><input type="checkbox"> Puedo recitar el ciclo sin mirar: editar → <code>add</code> → <code>commit</code> → <code>push</code>.</label>
   <label><input type="checkbox"> Distingo los dos repositorios: en el del curso solo hago <code>git pull</code>; en el mío, todo lo demás.</label>
@@ -353,6 +410,15 @@ git push</pre><button class="copiar" type="button">Copiar</button></div>
   <tr><td><code>git pull</code></td><td>Baja las novedades desde GitHub — lo que haces en el repositorio del curso cada semana.</td></tr>
 </table>
 
+<p>Y, aparte, los cuatro comandos <b>de fundación</b> que usaste una sola vez en el paso 3. No hace falta memorizarlos: solo se ejecutan al crear un repositorio, y GitHub te los recuerda en su página de <span class="ui">Quick setup</span> cada vez que fundes uno nuevo:</p>
+<table>
+  <tr><th style="width:34%">Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>git init</code></td><td>Convierte la carpeta actual en un repositorio Git.</td></tr>
+  <tr><td><code>git branch -M main</code></td><td>Nombra <code>main</code> a la rama principal del historial.</td></tr>
+  <tr><td><code>git remote add origin dirección</code></td><td>Conecta el repositorio local con su dirección en GitHub, bajo el alias <code>origin</code>.</td></tr>
+  <tr><td><code>git push -u origin main</code></td><td>El primer push: publica y deja la ruta memorizada para que después baste <code>git push</code>.</td></tr>
+</table>
+
 <!-- ================= PROBLEMAS ================= -->
 <h2 id="problemas">Si algo se atasca</h2>
 
@@ -366,12 +432,12 @@ git config --global user.email "tu-correo@ejemplo.com"</pre><button class="copia
 
 <details>
   <summary>P2 · Al hacer push se abre el navegador pidiendo autorización (o no pasa nada)</summary>
-  <p>La ventana del navegador es el camino correcto: inicia sesión y pulsa <span class="ui">Authorize</span>. Si la terminal se queda esperando y no ves nada: <span class="os">WIN</span> mira la barra de tareas — a veces la ventana del navegador se abre detrás de VS&nbsp;Code; <span class="os">MAC</span> busca el pequeño aviso de VS&nbsp;Code pidiendo permiso y pulsa <span class="ui">Allow</span> — el navegador se abre después. Ocurre solo la primera vez; después, <code>git push</code> pasa directo.</p>
+  <p>Es el camino correcto: inicia sesión y pulsa <span class="ui">Authorize</span>. <span class="os">WIN</span> Antes del navegador aparece una ventanita de <i>Git Credential Manager</i> — pulsa ahí <span class="ui">Sign in with your browser</span>. Si la terminal se queda esperando y no ves nada, mira la barra de tareas: a veces esa ventanita (o el navegador) se abre detrás de VS&nbsp;Code. <span class="os">MAC</span> Busca el pequeño aviso de VS&nbsp;Code pidiendo permiso y pulsa <span class="ui">Allow</span> — el navegador se abre después. Ocurre solo la primera vez; después, <code>git push</code> pasa directo.</p>
 </details>
 
 <details>
   <summary>P3 · <code>git push</code> falla con “Authentication failed” o pide contraseña en la terminal</summary>
-  <p>GitHub ya no acepta tu contraseña escrita en la terminal. Si te la pidió, cancela con <span class="ui">Ctrl+C</span> y asegúrate de estar en la <b>terminal integrada de VS&nbsp;Code</b> (no en la Terminal del sistema). Repite <code>git push</code> y esta vez acepta todo lo que aparezca: el aviso de VS&nbsp;Code pidiendo permiso (<span class="ui">Allow</span>) y la ventana del navegador (<span class="ui">Authorize</span>). Si sigue fallando, avisa al docente — se resuelve en un minuto y no es culpa tuya.</p>
+  <p>GitHub ya no acepta tu contraseña escrita en la terminal. Si te la pidió, cancela con <span class="ui">Ctrl+C</span> y asegúrate de estar en la <b>terminal integrada de VS&nbsp;Code</b> (no en la Terminal del sistema). Repite el push que falló (en el paso 3 es <code>git push -u origin main</code>; en adelante, <code>git push</code> a secas) y esta vez acepta todo lo que aparezca: el aviso de VS&nbsp;Code pidiendo permiso (<span class="ui">Allow</span>) y la ventana del navegador (<span class="ui">Authorize</span>). Si sigue fallando, avisa al docente — se resuelve en un minuto y no es culpa tuya.</p>
 </details>
 
 <details>
@@ -390,13 +456,24 @@ git config --global user.email "tu-correo@ejemplo.com"</pre><button class="copia
 </details>
 
 <details>
-  <summary>P6 · Cloné mi repositorio dentro del repositorio del curso</summary>
-  <p>Pasa si la terminal estaba «parada» en <code>propedeutico-flacso</code> al clonar. Git se confunde con repositorios anidados, así que muévelo: cierra VS&nbsp;Code y, con el explorador de archivos o el Finder, arrastra la carpeta <code>mi-propedeutico</code> completa hacia afuera, a <code>Documentos/propedeutico</code>, junto a la del curso. No se rompe nada; vuelve a abrirla desde VS&nbsp;Code.</p>
+  <summary>P6 · Mi carpeta quedó dentro del repositorio del curso (o pegué los comandos en la carpeta equivocada)</summary>
+  <p>Dos variantes del mismo despiste:</p>
+  <ol>
+    <li><b>La carpeta <code>mi-propedeutico</code> quedó dentro de <code>propedeutico-flacso</code>.</b> Git se confunde con repositorios anidados, así que muévela: cierra VS&nbsp;Code y, con el explorador de archivos o el Finder, arrastra la carpeta completa hacia afuera, a <code>Documentos/propedeutico</code>, junto a la del curso. No se rompe nada — incluso si ya habías ejecutado los comandos del paso 3. Vuelve a abrirla desde VS&nbsp;Code.</li>
+    <li><b>Pegaste los comandos con la terminal parada en otra carpeta.</b> La señal típica: <code>git remote add origin</code> responde <code>error: remote origin already exists</code> — estabas dentro del repositorio del curso. Para dejarlo como estaba, ejecuta ahí mismo <code>git reset --hard origin/main</code> (devuelve el repositorio del curso exactamente a su estado publicado; ahí no debes tener cambios propios). Después abre tu carpeta correcta (<span class="ui">File → Open Folder</span> → <code>mi-propedeutico</code>) y repite el paso 3. Si dudas, pide ayuda al docente o usa la plantilla de IA de más abajo.</li>
+  </ol>
 </details>
 
 <details>
   <summary>P7 · Hice commit pero en github.com no aparece nada nuevo</summary>
   <p>El commit vive en tu computadora hasta que lo empujas: ejecuta <code>git push</code> y refresca la página. Si push responde <code>Everything up-to-date</code>, entonces no hay commits pendientes de subir — revisa <code>git status</code>: probablemente el cambio no pasó por <code>add</code> y <code>commit</code>.</p>
+</details>
+
+<details>
+  <summary>P8 · El primer push responde “rejected” o “failed to push some refs” y sugiere “fetch first”</summary>
+  <p>Casi seguro marcaste <span class="ui">Add a README file</span> (o una licencia) al crear el repositorio: GitHub hizo un commit propio que tu historial local no conoce, y los dos historiales chocan. Como ese commit de GitHub es solo el README automático — nada tuyo —, lo más simple es sobrescribirlo:</p>
+  <div class="cmd"><pre>git push -u origin main --force</pre><button class="copiar" type="button">Copiar</button></div>
+  <p><code>--force</code> le dice a Git «lo mío manda» y reemplaza lo que había en GitHub. Úsalo solo aquí, en tu repositorio recién nacido y tuyo — <b>nunca</b> en un repositorio compartido con otras personas.</p>
 </details>
 
 <!-- ================= AYUDA CON IA ================= -->
@@ -422,11 +499,11 @@ Tres consejos para que la respuesta sirva:
 
 <!-- ================= PUENTE ================= -->
 <h2>Qué sigue</h2>
-<p>Ya dominas los dos sentidos del tráfico: <em>recibir</em> con <code>git pull</code> (clase 2) y <em>publicar</em> con <code>add</code> → <code>commit</code> → <code>push</code> (hoy). En la próxima sesión volvemos a los notebooks — algoritmos, tipos de variables y operadores en Python — y tu bitácora empieza a trabajar: al final de cada clase, escribe una entrada nueva y publícala. Ese pequeño ritual es tu respaldo, tu registro de avance y el primer contenido de tu portafolio público.</p>
+<p>Ya dominas los dos sentidos del tráfico: <em>recibir</em> con <code>git pull</code> (clase 2) y <em>publicar</em> con <code>add</code> → <code>commit</code> → <code>push</code> (hoy) — y además fundaste un repositorio desde cero, algo que mucha gente aprende bastante después. En la próxima sesión volvemos a los notebooks — algoritmos, tipos de variables y operadores en Python — y tu bitácora empieza a trabajar: al final de cada clase, escribe una entrada nueva y publícala. Ese pequeño ritual es tu respaldo, tu registro de avance y el primer contenido de tu portafolio público.</p>
 
 <footer>
   Propedéutico de Matemáticas y Programación · FLACSO Ecuador — Manual de sesión: tu propio repositorio, versión julio 2026.<br>
-  Continúa el <a href="manual_clase2_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a> (GitHub y tu primer entorno) y complementa al <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a> (VS&nbsp;Code, Python y Git).
+  Continúa el <a href="manual_clase02_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a> (GitHub y tu primer entorno) y complementa al <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a> (VS&nbsp;Code, Python y Git).
 </footer>
 
 </div>
