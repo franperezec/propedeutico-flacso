@@ -23,6 +23,7 @@ Hay dos vías, y ambas están cubiertas por los manuales de la carpeta [`manuale
 - 🛠️ [Manual de instalación — VS Code, Python y Git (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) — complétalo **antes** de la clase 2
 - 📖 [Manual de la clase 2 — GitHub y tu primer entorno (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase02_github_primer_entorno.html) · [PDF](manuales/manual_clase02_github_primer_entorno.pdf)
 - 📖 [Manual de la clase 3 — Tu propio repositorio en GitHub (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase03_tu_propio_repositorio.html) · [PDF](manuales/manual_clase03_tu_propio_repositorio.pdf)
+- 🧭 [El mapa de las herramientas (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_mapa_herramientas.html) · [PDF](manuales/manual_mapa_herramientas.pdf) — manual de consulta para todo el curso: qué hace (y qué no) cada herramienta, el semáforo de VS Code y los errores frecuentes
 
 ### Vía A — Google Colab (sin instalar nada)
 
@@ -75,7 +76,8 @@ propedeutico-flacso/
 ├── manuales/                      # Guías paso a paso para preparar tu equipo
 │   ├── manual_instalacion_vscode.html
 │   ├── manual_clase02_github_primer_entorno.html
-│   └── manual_clase03_tu_propio_repositorio.html
+│   ├── manual_clase03_tu_propio_repositorio.html
+│   └── manual_mapa_herramientas.html
 ├── aplicaciones/                  # Índice de aplicaciones web interactivas del curso
 │   └── README.md
 ├── datos/                         # Conjuntos de datos usados en clase (cuando aplique)
@@ -97,6 +99,7 @@ Temario completo según el [sílabo](silabo_propedeutico_2026.pdf). El material 
 | — | *en casa* | *Preparación:* instalación de VS Code, Python y Git · cuentas de Gmail y GitHub | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) |
 | 2 | mar 14-jul | Teoría de conjuntos y lógica proposicional · Git y GitHub en la práctica: clonar el repositorio y crear tu primer entorno virtual | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase02_github_primer_entorno.html) · [PDF](manuales/manual_clase02_github_primer_entorno.pdf) · [App Tablas de Verdad](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
 | 3 | mié 15-jul | Instalación y configuración del entorno Python (Anaconda, Jupyter, VS Code) · Introducción a Jupyter Notebooks | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_clase03_tu_propio_repositorio.html) · [PDF](manuales/manual_clase03_tu_propio_repositorio.pdf) |
+| — | *consulta* | *Referencia:* el mapa de las herramientas — qué hace (y qué no) cada pieza · semáforo de VS Code · errores frecuentes | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_mapa_herramientas.html) · [PDF](manuales/manual_mapa_herramientas.pdf) |
 | 4 | jue 16-jul | Algoritmos de programación, tipos de variables y operadores · Estructuras de datos básicas en Python | *(por publicar)* |
 | 5 | vie 17-jul | Funciones: imagen, preimagen, grafo, función compuesta y cardinalidad | *(por publicar)* |
 | 6–7 | sáb 18-jul | Espacios vectoriales, combinaciones lineales, independencia lineal y bases · Matrices y cálculo matricial con NumPy | *(por publicar)* |

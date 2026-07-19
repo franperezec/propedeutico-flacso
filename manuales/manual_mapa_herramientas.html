@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El mapa de las herramientas — Propedéutico FLACSO Ecuador</title>
+<style>
+  :root{
+    --tinta:#1e2a32;
+    --tinta-suave:#5a6a74;
+    --papel:#fafaf7;
+    --carta:#ffffff;
+    --vino:#7a1e2b;
+    --vino-claro:#f7edee;
+    --sesion:#443a7d;          /* identidad de este manual */
+    --sesion-claro:#efedf8;
+    --comun:#1d6b45;
+    --alerta:#8a5a00;
+    --alerta-fondo:#fdf3dd;
+    --linea:#dcdcd4;
+    --mono:Consolas,"SF Mono",Menlo,"Courier New",monospace;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);
+       font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .pagina{max-width:860px;margin:0 auto;padding:0 22px 90px}
+  a{color:var(--vino)}
+  a:focus-visible,button:focus-visible,input:focus-visible{
+    outline:3px solid var(--sesion);outline-offset:2px;border-radius:3px}
+
+  header.doc{border-bottom:4px double var(--vino);padding:46px 0 26px;margin-bottom:8px}
+  .sello{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+         color:var(--vino);margin-bottom:14px}
+  h1{font-family:var(--serif);font-weight:600;font-size:2.15rem;line-height:1.18;margin:0 0 10px;
+     letter-spacing:-.01em}
+  .subtitulo{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--tinta-suave);margin:0}
+  .metadatos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding-top:16px;
+             border-top:1px solid var(--linea);font-size:.86rem;color:var(--tinta-suave)}
+  .metadatos b{color:var(--tinta);font-weight:600}
+
+  h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;margin:52px 0 14px;letter-spacing:-.005em}
+  p{margin:0 0 14px}
+  .nota{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
+        border-radius:6px;padding:15px 18px;margin:18px 0;font-size:.95rem}
+  .aviso{background:var(--alerta-fondo);border:1px solid #ecd9a8;border-left:5px solid var(--alerta);
+         border-radius:6px;padding:15px 18px;margin:18px 0;font-size:.95rem}
+  .aviso b:first-child,.nota b:first-child{display:block;margin-bottom:4px}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem;background:var(--carta)}
+  th,td{border:1px solid var(--linea);padding:10px 13px;text-align:left;vertical-align:top}
+  th{background:var(--vino-claro);font-family:var(--serif);font-weight:600}
+  td code,li code,p code{font-family:var(--mono);font-size:.86em;background:#f2f2ec;
+    padding:1px 6px;border-radius:3px}
+
+  .ui{font-weight:600;background:#f2f2ec;border:1px solid var(--linea);border-radius:4px;
+      padding:0 6px;font-size:.92em;white-space:nowrap}
+
+  .cmd{position:relative;background:#22303a;color:#eef3f6;border-radius:6px;margin:12px 0;
+       font-family:var(--mono);font-size:.92rem;line-height:1.55}
+  .cmd pre{margin:0;padding:14px 96px 14px 16px;overflow-x:auto;white-space:pre}
+  .cmd .copiar{position:absolute;top:9px;right:9px;border:1px solid #4a5b66;background:#31424e;
+       color:#dbe6ec;font-family:var(--sans);font-size:.74rem;padding:4px 11px;border-radius:4px;cursor:pointer}
+  .cmd .copiar:hover{background:#3d5160}
+  .consola{background:#101820;color:#c9d6de;border-radius:6px;margin:12px 0;font-family:var(--mono);
+           font-size:.88rem;line-height:1.6;border:1px solid #2c3a44}
+  .consola .barra{background:#1c2831;color:#8fa3af;font-size:.72rem;letter-spacing:.12em;
+                  text-transform:uppercase;padding:6px 14px;border-radius:6px 6px 0 0}
+  .consola pre{margin:0;padding:13px 16px;overflow-x:auto}
+  .consola .tu{color:#ffd479}
+  .consola .ok{color:#7dd6a0}
+  .consola .dim{color:#6b7d88}
+  .consola .rojo{color:#e08a8a}
+
+  .conceptos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  .conceptos.pares{grid-template-columns:1fr 1fr}
+  .concepto{background:var(--carta);border:1px solid var(--linea);border-top:4px solid var(--sesion);
+            border-radius:6px;padding:14px 16px;font-size:.93rem}
+  .concepto b{font-family:var(--serif);font-size:1.02rem;display:block;margin-bottom:6px}
+  @media (max-width:640px){.conceptos,.conceptos.pares{grid-template-columns:1fr}}
+
+  .svns{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;margin-top:10px}
+  .svns .cab{display:block;font-weight:700;font-size:.78rem;letter-spacing:.03em;text-transform:uppercase}
+  .svns .cab.si{color:var(--comun)}
+  .svns .cab.no{color:var(--alerta)}
+  .svns ul{margin:4px 0 0;padding-left:16px;font-size:.88rem}
+  .svns li{margin-bottom:5px}
+  @media (max-width:640px){.svns{grid-template-columns:1fr;gap:10px}}
+
+  .mapa{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;margin:20px 0;align-items:stretch}
+  .zona{border-radius:8px;padding:14px 16px}
+  .zona.local{background:var(--sesion-claro);border:1px solid var(--linea);border-left:5px solid var(--sesion)}
+  .zona.nube{background:var(--carta);border:1px dashed var(--tinta-suave)}
+  .zona-titulo{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+               color:var(--tinta-suave);margin-bottom:10px}
+  .cajah{background:var(--carta);border:1px solid var(--linea);border-radius:6px;padding:8px 12px;
+         margin:8px 0;font-size:.9rem}
+  .cajah b{font-family:var(--serif)}
+  .chip{display:inline-block;font-size:.74rem;background:#f2f2ec;border:1px solid var(--linea);
+        border-radius:12px;padding:1px 9px;margin:4px 3px 0 0}
+  .puente{display:flex;flex-direction:column;justify-content:center;gap:16px;font-family:var(--mono);
+          font-size:.78rem;color:var(--tinta-suave);text-align:center;padding:0 2px}
+  .puente .flecha{white-space:nowrap}
+  @media (max-width:640px){.mapa{grid-template-columns:1fr}
+    .puente{flex-direction:row;justify-content:center;flex-wrap:wrap;gap:10px;padding:4px 0}}
+
+  .escalera{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0 20px}
+  .peldano{background:var(--carta);border:1px solid var(--linea);border-top:4px solid var(--sesion);
+           border-radius:6px;padding:12px 14px;font-size:.88rem}
+  .peldano .como{display:block;font-family:var(--mono);font-size:.74rem;font-weight:700;
+                 color:var(--sesion);margin-bottom:6px}
+  .peldano .nivel{font-family:var(--serif);font-size:1rem;font-weight:600;display:block;margin-bottom:4px}
+  .escalera .peldano:nth-child(1){margin-top:36px}
+  .escalera .peldano:nth-child(2){margin-top:24px}
+  .escalera .peldano:nth-child(3){margin-top:12px}
+  @media (max-width:640px){.escalera{grid-template-columns:1fr}
+    .escalera .peldano{margin-top:0}}
+
+  .sgit{font-family:var(--mono);font-weight:700}
+
+  .perla{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
+         border-radius:6px;padding:14px 18px;margin:14px 0;font-size:.95rem}
+  .perla .dicho{display:block;font-family:var(--serif);font-style:italic;font-size:1.08rem;margin-bottom:6px}
+
+  .checklist{background:var(--carta);border:2px solid var(--comun);border-radius:8px;
+             padding:22px 26px;margin:26px 0}
+  .checklist h2{margin-top:0}
+  .checklist label{display:flex;gap:12px;align-items:flex-start;padding:9px 0;
+                   border-bottom:1px dotted var(--linea);cursor:pointer;font-size:.98rem}
+  .checklist label:last-of-type{border-bottom:none}
+  .checklist input{width:19px;height:19px;margin-top:3px;accent-color:var(--comun);flex:0 0 auto}
+
+  footer{margin-top:64px;border-top:1px solid var(--linea);padding-top:18px;
+         font-size:.84rem;color:var(--tinta-suave)}
+
+  @media print{
+    body{background:#fff;font-size:12.5px}
+    .copiar{display:none}
+    .zona.local,.peldano,.chip{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .mapa,.zona,.escalera,.peldano,.perla,.concepto{page-break-inside:avoid}
+    a{color:var(--tinta)}
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+<header class="doc">
+  <div class="sello">Propedéutico de Matemáticas y Programación · FLACSO Ecuador</div>
+  <h1>El mapa de las herramientas</h1>
+  <p class="subtitulo">Manual de consulta — qué es cada pieza del taller, qué hace y qué no hace, cómo leer las señales de VS&nbsp;Code y cómo salir de los tropiezos de siempre.</p>
+  <div class="metadatos">
+    <span><b>Modalidad:</b> consulta libre — no es una clase</span>
+    <span><b>Léelo:</b> después de la clase 2 o 3</span>
+    <span><b>Úsalo:</b> todo el curso — y toda la maestría</span>
+  </div>
+</header>
+
+<!-- ================= CÓMO USAR ================= -->
+<h2>Cómo usar este manual</h2>
+<p>Este manual no es paso a paso: es un <b>mapa</b>. Los tres manuales anteriores te enseñaron a <em>hacer</em>; este te ayuda a <em>ubicarte</em>. Léelo de corrido una vez (unos 20 minutos) y después salta directo a lo que necesites:</p>
+<p><a href="#mapa">El mapa</a> · <a href="#grandes">Las cuatro grandes</a> · <a href="#piezas">Las piezas de cada día</a> · <a href="#escalera">La escalera de persistencia</a> · <a href="#semaforo">El semáforo de VS&nbsp;Code</a> · <a href="#donde">¿Dónde estoy?</a> · <a href="#sabiduria">Sabiduría de laboratorio</a> · <a href="#errores">Los errores de siempre</a></p>
+<div class="nota"><b>💡 ¿Por qué el manual de instalación habla de «tres herramientas» y aquí hay cuatro?</b>
+Porque tres se instalan y la cuarta se visita: GitHub no es un programa, es un lugar. Ese es exactamente el tipo de confusión que este mapa viene a deshacer.</div>
+
+<!-- ================= MAPA ================= -->
+<h2 id="mapa">El mapa: lo que vive en tu computadora y lo que vive en la nube</h2>
+<div class="mapa">
+  <div class="zona local">
+    <div class="zona-titulo">💻 Tu computadora</div>
+    <div class="cajah"><b>VS&nbsp;Code</b> — la mesa de trabajo<br>
+      <span class="chip">Terminal</span><span class="chip">Notebooks</span><span class="chip">Extensiones</span>
+    </div>
+    <div class="cajah"><b>Python</b> — el motor</div>
+    <div class="cajah"><b>.venv</b> — la caja de herramientas</div>
+    <div class="cajah"><b>Git</b> — la cámara y el álbum</div>
+  </div>
+  <div class="puente">
+    <span class="flecha">internet</span>
+    <span class="flecha">git push ⟶</span>
+    <span class="flecha">⟵ git pull · clone</span>
+    <span class="flecha">navegador ⇄</span>
+  </div>
+  <div class="zona nube">
+    <div class="zona-titulo">☁️ La nube</div>
+    <div class="cajah"><b>GitHub</b> — la biblioteca pública</div>
+    <div class="cajah"><b>Colab</b> — la mesa prestada<br><span class="chip">computadoras de Google</span></div>
+  </div>
+</div>
+<p><b>Todo lo de la izquierda funciona sin internet.</b> Internet hace falta solo para cruzar el puente: <code>git push</code> sube, <code>git pull</code> y <code>git clone</code> bajan — y el navegador te lleva a Colab. Guardar con <span class="ui">Ctrl+S</span> no cruza el puente; hacer commit tampoco: solo <code>push</code> publica.</p>
+
+<!-- ================= LAS CUATRO GRANDES ================= -->
+<h2 id="grandes">Las cuatro grandes: sirve para / no sirve para</h2>
+<p>Cada herramienta tiene un oficio — y confundir los oficios es la fuente de casi todas las ideas erróneas. La columna «no sirve para» es tan importante como la otra.</p>
+<div class="conceptos pares">
+  <div class="concepto"><b>VS&nbsp;Code — la mesa de trabajo</b>
+    El editor donde escribes y ejecutas: dentro de él viven la terminal, los notebooks y las extensiones.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Escribir y editar código y texto.</li>
+          <li>Alojar tu terminal y tus notebooks.</li>
+          <li>Mostrarte lo que Git ve (el <a href="#semaforo">semáforo</a> de más abajo).</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>«Saber» Python por sí solo: sin el intérprete instalado, la mesa está vacía.</li>
+          <li>Guardar en la nube: <span class="ui">Ctrl+S</span> escribe solo en tu disco.</li>
+          <li>Sustituir a Git: solo muestra sus señales.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="concepto"><b>Python — el motor</b>
+    El lenguaje del curso — y el programa (intérprete) que entiende y ejecuta lo que escribes.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Ejecutar tus programas y notebooks.</li>
+          <li>Hacer los cálculos del curso.</li>
+          <li>Trabajar sin internet.</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>Abrirse como una app con ventana propia: trabaja detrás de VS&nbsp;Code y de los notebooks.</li>
+          <li>Guardar versiones o respaldar: ese es el oficio de Git.</li>
+          <li>Ser exclusivo de tu laptop: Colab usa este mismo motor, en la nube.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="concepto"><b>Git — la cámara y el álbum</b>
+    El control de versiones: fotografía tu proyecto cuando <em>tú</em> se lo pides y guarda el álbum completo.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Guardar versiones con <code>commit</code>.</li>
+          <li>Recuperar cualquier fotografía del pasado.</li>
+          <li>Conectar tu carpeta con GitHub (<code>push</code> / <code>pull</code>).</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>Respaldar automáticamente — <b>no es OneDrive ni Drive</b>: sin <code>commit</code> y <code>push</code> no hay copia en ninguna parte.</li>
+          <li>Ejecutar código.</li>
+          <li>Nada que exija internet — salvo <code>push</code>, <code>pull</code> y <code>clone</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="concepto"><b>GitHub — la biblioteca pública</b>
+    El sitio web donde viven copias de los repositorios — el del curso y el tuyo. No se instala: se visita.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Alojar y mostrar tus repositorios: tu portafolio.</li>
+          <li>Distribuir los materiales del curso.</li>
+          <li>Respaldar lo que subiste con <code>push</code>.</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li><b>Ejecutar código</b> — es la biblioteca, no la mesa: para correr un notebook lo bajas a tu computadora o lo abres en Colab.</li>
+          <li>Funcionar sin Git: sin Git en tu máquina, GitHub es solo una página que miras.</li>
+          <li>Ver lo que no haya viajado con <code>push</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= LAS PIEZAS ================= -->
+<h2 id="piezas">Las piezas de cada día: terminal, notebook, entorno, Colab</h2>
+<div class="conceptos pares">
+  <div class="concepto"><b>La terminal — la ventanilla</b>
+    La ventana (dentro de VS&nbsp;Code) donde le das órdenes escritas y exactas a la computadora; siempre está «parada» en una carpeta.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Ejecutar <code>git</code>, <code>python</code>, <code>pip</code> y compañía.</li>
+          <li>Decirte dónde estás (<code>pwd</code>).</li>
+          <li>Acompañarte toda la maestría.</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>Adivinar: exige la orden exacta — <code>git</code>, no <code>gti</code>.</li>
+          <li>«Programar»: ahí se dan órdenes; el código se escribe en el editor.</li>
+          <li>Morder: leer lo que responde es la habilidad, no el castigo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="concepto"><b>El notebook — el cuaderno de laboratorio</b>
+    Un archivo <code>.ipynb</code> que mezcla texto, código y resultados, celda por celda.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Las clases del curso.</li>
+          <li>Explorar datos contando la historia junto al código.</li>
+          <li>Abrirse igual en VS&nbsp;Code y en Colab.</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>Ser «de Colab» o «de VS&nbsp;Code»: el mismo archivo se abre en ambos.</li>
+          <li>Correr solo: necesita un motor (kernel) — tu <code>.venv</code> o la máquina de Colab.</li>
+          <li>Ejecutarse «en orden» por su cuenta: tú decides qué celda corre y cuándo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="concepto"><b>El entorno virtual (.venv) — la caja de herramientas</b>
+    Una carpeta del proyecto con las librerías que ese proyecto necesita — y solo esas.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Aislar las librerías de cada proyecto.</li>
+          <li>Reconstruirse en cualquier máquina con <code>requirements.txt</code> (la lista de compras).</li>
+          <li>Avisarte que está activo con el <code>(.venv)</code> del prompt.</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>Ser «otro Python» que descargaste.</li>
+          <li>Viajar a GitHub: por eso se ve gris en VS&nbsp;Code — Git lo ignora a propósito; lo que viaja es <code>requirements.txt</code>.</li>
+          <li>Activarse solo fuera de VS&nbsp;Code.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="concepto"><b>Colab — la mesa prestada</b>
+    Notebooks en el navegador, ejecutándose en computadoras de Google: la otra vía legítima del curso.
+    <div class="svns">
+      <div><span class="cab si">✔ Sirve para</span>
+        <ul>
+          <li>Trabajar desde cualquier máquina sin instalar nada.</li>
+          <li>Traer ya instaladas las librerías del curso.</li>
+          <li>Compartirse como un documento de Google.</li>
+        </ul>
+      </div>
+      <div><span class="cab no">✘ No sirve para</span>
+        <ul>
+          <li>Ser VS&nbsp;Code: lo que instalas o guardas en tu laptop no existe en Colab, y viceversa.</li>
+          <li>Guardar en tu disco: guarda en tu Google Drive.</li>
+          <li>Publicar en GitHub: «Guardar una copia en Drive» no es <code>git push</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ESCALERA ================= -->
+<h2 id="escalera">La escalera de persistencia: ¿dónde vive tu trabajo?</h2>
+<p>Tu trabajo vive en cuatro niveles, y cada uno necesita un gesto tuyo para subir al siguiente. La mitad de los sustos del curso — «¡cambié el archivo y no pasa nada!», «¡hice commit y GitHub no muestra nada!» — son confusiones de peldaño.</p>
+<div class="escalera">
+  <div class="peldano"><span class="como">1 · escribes</span><span class="nivel">La pantalla</span>
+    Lo que acabas de teclear. Existe solo en la memoria de VS&nbsp;Code: si algo se cierra mal, se fue. Señal: el punto ● en la pestaña.</div>
+  <div class="peldano"><span class="como">2 · ↑ Ctrl+S / ⌘S</span><span class="nivel">El disco</span>
+    El archivo guardado en tu computadora. Ya no se pierde al cerrar — y recién ahora Git puede verlo. Señal: la ✕ vuelve a la pestaña.</div>
+  <div class="peldano"><span class="como">3 · ↑ git add + commit</span><span class="nivel">El historial</span>
+    La fotografía en tu álbum local. Puedes volver a ella cuando quieras — pero sigue viviendo solo en tu laptop.</div>
+  <div class="peldano"><span class="como">4 · ↑ git push</span><span class="nivel">La nube</span>
+    Publicado en GitHub: respaldado y visible desde cualquier lugar. Recién aquí existe fuera de tu computadora.</div>
+</div>
+<div class="nota"><b>💡 Regla de bolsillo</b>
+Un cambio no está a salvo hasta el peldaño 4. <strong>Ctrl+S no es commit; commit no es push.</strong> Cuando algo «no aparece», pregúntate en qué peldaño se quedó.</div>
+
+<!-- ================= SEMÁFORO ================= -->
+<h2 id="semaforo">El semáforo de VS&nbsp;Code: aprender a leer sus señales</h2>
+<p>VS&nbsp;Code decora los nombres de archivo con letras y colores: es Git hablándote por señas. En este curso Git se maneja <b>escribiendo comandos en la terminal</b>; esta sección no cambia eso — te enseña a <em>leer</em> el tablero, no a soltar el volante.</p>
+<table>
+  <tr><th style="width:20%">Señal</th><th style="width:22%">Dónde aparece</th><th>Qué significa</th><th>Ya la conoces de la terminal</th></tr>
+  <tr>
+    <td><b>●</b> punto en la pestaña</td>
+    <td>Pestaña del editor, donde suele estar la ✕</td>
+    <td>Cambios <b>sin guardar</b>. Git todavía no ve nada de esto.</td>
+    <td>Ninguna: primero <span class="ui">Ctrl+S</span> / <span class="ui">⌘S</span>. El hábito: guardar antes de cualquier <code>git status</code>.</td>
+  </tr>
+  <tr>
+    <td><b class="sgit" style="color:#2f7d3f">U</b> (verde)</td>
+    <td>Explorador y panel Source Control</td>
+    <td><em>Untracked</em>: archivo nuevo que Git aún no vigila.</td>
+    <td>El «Untracked files» (en rojo) de <code>git status</code>. Se atiende con <code>git add</code>.</td>
+  </tr>
+  <tr>
+    <td><b class="sgit" style="color:#2f7d3f">A</b> (verde)</td>
+    <td>Panel Source Control (Staged Changes)</td>
+    <td><em>Added</em>: ya está en la bandeja; saldrá en la próxima fotografía.</td>
+    <td>El «Changes to be committed» (en verde). Se atiende con <code>git commit -m</code>.</td>
+  </tr>
+  <tr>
+    <td><b class="sgit" style="color:#9a6700">M</b> (amarillo/naranja)</td>
+    <td>Explorador y Source Control</td>
+    <td><em>Modified</em>: archivo vigilado, con cambios desde el último commit.</td>
+    <td>El «modified:» de <code>git status</code>. Se atiende con <code>git add</code>.</td>
+  </tr>
+  <tr>
+    <td><b class="sgit" style="color:#b3392b">D</b> (rojo, nombre tachado)</td>
+    <td>Source Control</td>
+    <td><em>Deleted</em>: archivo borrado — el borrado también se fotografía.</td>
+    <td>El «deleted:» de <code>git status</code>; también pasa por <code>add</code> y <code>commit</code>.</td>
+  </tr>
+  <tr>
+    <td>Nombre en <b class="sgit" style="color:#7a7a7a">gris</b> (sin letra)</td>
+    <td>Explorador</td>
+    <td><em>Ignored</em>: Git lo ignora a propósito (lista <code>.gitignore</code>). Tu <code>.venv</code> se ve así — y está bien.</td>
+    <td>No aparece en <code>git status</code>, deliberadamente.</td>
+  </tr>
+  <tr>
+    <td>Número en el ícono de Source Control</td>
+    <td>Barra lateral izquierda</td>
+    <td>Cuántos archivos tienen cambios pendientes. Es un recordatorio, no un error.</td>
+    <td>El resumen que te daría <code>git status</code>.</td>
+  </tr>
+</table>
+<div class="nota"><b>💡 El mismo estado, dos colores</b>
+La terminal pinta <em>untracked</em> en <strong>rojo</strong> (pendiente de atender) y VS&nbsp;Code lo pinta en <strong>verde</strong> (archivo nuevo). No se contradicen: cada programa eligió su paleta. Lo que no cambia es el estado: U = <em>untracked</em> = Git aún no lo vigila.</div>
+<div class="aviso"><b>⚠️ Las señales se leen; los comandos se escriben</b>
+El panel Source Control tiene botones (+, ✓ Commit, Sync) que hacen <code>add</code>, <code>commit</code> y <code>push</code> con clics. En este curso seguiremos escribiendo los comandos: entender el ciclo vale más que ahorrarse tres teclas, y la terminal funciona igual en cualquier computadora. Usa el panel como tablero de información, no como volante.</div>
+<p>Alguna vez verás otras letras — <b class="sgit">R</b> de renombrado, <b class="sgit">C</b> de conflicto —: primas lejanas que no necesitas este semestre.</p>
+
+<!-- ================= DÓNDE ESTOY ================= -->
+<h2 id="donde">¿Dónde estoy? — la pregunta que resuelve la mitad de los problemas</h2>
+<p>La categoría número uno de tropiezos de principiante no es de código: es de <b>ubicación</b> — comandos correctos ejecutados en la carpeta equivocada. Tres preguntas te ubican siempre:</p>
+<ol>
+  <li><b>¿Qué carpeta tiene abierta VS&nbsp;Code?</b> Míralo en la barra de título, arriba. La terminal integrada nace «parada» en esa carpeta.</li>
+  <li><b>¿Dónde está parada la terminal?</b> Pregúntaselo con <code>pwd</code> (<em>print working directory</em>); la ruta antes del cursor también lo dice.</li>
+  <li><b>¿Este repositorio es el que creo?</b> <code>git status</code> responde en su primera línea — o protesta con <code>fatal: not a git repository</code> si no estás en uno.</li>
+</ol>
+<div class="cmd"><pre>pwd
+git status</pre><button class="copiar" type="button">Copiar</button></div>
+<div class="nota"><b>💡 Antes de pedir ayuda</b>
+A un docente o a una IA, llega con estas tres respondidas: <strong>¿dónde estoy?, ¿guardé?, ¿qué dice <code>git status</code>?</strong> La mitad de las veces, responderlas ya resuelve el problema.</div>
+
+<!-- ================= SABIDURÍA ================= -->
+<h2 id="sabiduria">Sabiduría de laboratorio</h2>
+<p>Los informáticos llevan décadas destilando su experiencia en refranes. Casi todos son medio broma — y casi todos esconden una lección que en este curso podemos tomar en serio.</p>
+
+<div class="perla"><span class="dicho">«Si funciona, no lo toques.»</span>
+Con Git, exactamente al revés: <strong>si funciona, haz commit — y entonces tócalo todo.</strong> La fotografía es tu punto de retorno: con el historial guardado, experimentar deja de ser un riesgo. El dicho nació en talleres sin control de versiones; tú ya tienes uno.</div>
+
+<div class="perla"><span class="dicho">«Reiniciar arregla casi todo.»</span>
+Verdad legitimada. Cerrar y volver a abrir VS&nbsp;Code — o abrir una terminal nueva — no es superstición: la terminal nueva vuelve a leer el PATH y «se entera» de lo que acabas de instalar. Por eso los manuales insisten tanto en «abre una terminal <strong>nueva</strong>».</div>
+
+<div class="perla"><span class="dicho">«Es más fácil rehacer que arreglar.»</span>
+Para principiantes, a veces es literal: si tu copia del <strong>repositorio del curso</strong> quedó rota y no entiendes cómo, borrar la carpeta y volver a clonar es una salida legítima — todo está en GitHub. La letra pequeña: vale para el repositorio del curso, donde no tienes cambios propios; en <strong>tu</strong> repositorio, lo que no haya viajado con <code>push</code> se pierde con la carpeta.</div>
+
+<div class="perla"><span class="dicho">«No dejes que las impresoras sientan tu miedo.»</span>
+Los mensajes de error no muerden: son la computadora explicando qué le faltó, no un regaño. Léelos empezando por la <strong>última línea</strong>, que suele traer la clave — y a veces hasta la solución. Si no lo entiendes, cópialo completo y pregúntale a una IA con la plantilla del final.</div>
+
+<div class="perla"><span class="dicho">«Funciona en mi máquina.»</span>
+La excusa más famosa de la informática — y la razón de ser de <code>requirements.txt</code> y de los entornos virtuales: que «tu máquina» y las demás tengan la misma caja de herramientas. Si algo corre en Colab pero no en tu laptop (o al revés), sospecha del entorno antes que del código.</div>
+
+<div class="perla"><span class="dicho">«La computadora hace lo que le dices, no lo que quieres.»</span>
+<code>gti</code> no es <code>git</code> y <code>commit -n</code> no es <code>commit -m</code>: para la terminal, «casi correcto» es incorrecto. La buena noticia: muchas veces te lo dice con propuesta incluida (<em>«The most similar command is…»</em>). Tu parte del trato es leerla.</div>
+
+<div class="perla"><span class="dicho">«Ante la duda, git status.»</span>
+Esta no es heredada: es la que este curso te regala. <code>git status</code> no cambia nada — es la pregunta gratis. Antes de un <code>add</code>, después de un <code>commit</code>, cuando no entiendes qué pasó: pregunta. (Su primo para saber dónde estás parado: <code>pwd</code>.)</div>
+
+<!-- ================= ERRORES ================= -->
+<h2 id="errores">Los errores de siempre</h2>
+<p>La mitad de los tropiezos de un principiante son de tipeo; la otra mitad, de estar parado en la carpeta equivocada. Antes de la tabla, mira lo amable que puede ser un error:</p>
+<div class="consola">
+  <div class="barra">Un error amable, visto de cerca</div>
+  <pre><span class="dim">~/Documentos/propedeutico/mi-propedeutico&gt;</span> <span class="tu">git stauts</span>
+<span class="rojo">git: 'stauts' is not a git command. See 'git --help'.</span>
+
+The most similar command is
+        <span class="ok">status</span></pre>
+</div>
+<p>Git no solo se queja: <b>te sugiere la palabra correcta</b>. Léela. La tabla siguiente reúne los tropiezos más frecuentes del curso; cuando la solución ya vive en otro manual, el enlace te lleva directo.</p>
+<table>
+  <tr><th style="width:30%">Síntoma (lo que ves)</th><th style="width:28%">Qué pasó</th><th>Qué hacer</th></tr>
+  <tr>
+    <td><code>git: 'stauts' is not a git command</code></td>
+    <td>Subcomando de Git mal tecleado.</td>
+    <td>Lee las líneas siguientes: Git casi siempre propone «The most similar command is…». Escríbelo bien y repite.</td>
+  </tr>
+  <tr>
+    <td><code>error: unknown switch 'n'</code> tras un commit</td>
+    <td>Escribiste <code>-n</code> en lugar de <code>-m</code> (la m de <em>mensaje</em>).</td>
+    <td>Repite con <code>git commit -m "mensaje"</code>. Si la terminal «se puso rara», es el P5 del <a href="manual_clase03_tu_propio_repositorio.html#problemas" target="_blank" rel="noopener">Manual de la clase 3</a>.</td>
+  </tr>
+  <tr>
+    <td><code>"gti" no se reconoce…</code> / <code>command not found</code></td>
+    <td>El <b>nombre del programa</b> mal escrito — la terminal no adivina.</td>
+    <td>Compara letra por letra: <code>git</code>, <code>python</code>, <code>pip</code>. Si está bien escrito y aun así no existe, la terminal es vieja o falta instalar: terminal nueva y, si sigue, P1-P2 del <a href="manual_instalacion_vscode.html#problemas" target="_blank" rel="noopener">Manual de instalación</a>.</td>
+  </tr>
+  <tr>
+    <td>El commit responde <code>Please tell me who you are</code></td>
+    <td>Falta tu identidad de Git en esa computadora.</td>
+    <td>La solución vive en la <a href="manual_instalacion_vscode.html#seccion-g" target="_blank" rel="noopener">sección G del Manual de instalación</a> (y en el P1 del <a href="manual_clase03_tu_propio_repositorio.html#problemas" target="_blank" rel="noopener">Manual de la clase 3</a>): dos comandos <code>git config</code> y repetir el commit.</td>
+  </tr>
+  <tr>
+    <td><code>fatal: not a git repository</code></td>
+    <td>La terminal está parada en una carpeta que no es un repositorio.</td>
+    <td><code>pwd</code> para ver dónde estás; abre la carpeta correcta (<span class="ui">File → Open Folder</span>) y una terminal nueva.</td>
+  </tr>
+  <tr>
+    <td>Cambié el archivo, pero <code>git status</code> dice <code>nothing to commit</code></td>
+    <td>Archivo sin guardar (mira el ●) o carpeta equivocada.</td>
+    <td><span class="ui">Ctrl+S</span> / <span class="ui">⌘S</span> y repite; si persiste, <code>pwd</code> (es el P4 del <a href="manual_clase03_tu_propio_repositorio.html#problemas" target="_blank" rel="noopener">Manual de la clase 3</a>).</td>
+  </tr>
+  <tr>
+    <td><code>python</code> no responde, abre la Microsoft Store o dice 2.7</td>
+    <td>El PATH — o en Mac el comando es <code>python3</code>.</td>
+    <td>P1-P3 del <a href="manual_instalacion_vscode.html#problemas" target="_blank" rel="noopener">Manual de instalación</a> — cada caso tiene su receta.</td>
+  </tr>
+  <tr>
+    <td>Instalé una librería pero el notebook dice <code>ModuleNotFoundError</code></td>
+    <td>Se instaló fuera de la caja: el entorno no estaba activo, o el kernel del notebook no es <code>.venv</code>.</td>
+    <td>Verifica el <code>(.venv)</code> en el prompt y <span class="ui">Select Kernel</span> → <code>.venv</code> (pasos 4-6 del <a href="manual_clase02_github_primer_entorno.html" target="_blank" rel="noopener">Manual de la clase 2</a>).</td>
+  </tr>
+</table>
+
+<!-- ================= AYUDA CON IA ================= -->
+<div class="nota" id="ayuda-ia"><b>💡 ¿Tu problema no está en la lista? Pídele ayuda a una IA</b>
+Un asistente de IA (ChatGPT, Claude, Gemini o Copilot) resuelve muy bien este tipo de atascos <b>si le das contexto suficiente</b>. Copia esta plantilla, rellena los huecos [entre corchetes] y pégala en el chat:
+<div class="cmd"><pre>Estoy siguiendo un manual del curso propedéutico de FLACSO
+y me atasqué en [paso o sección del manual donde estabas].
+Mi sistema operativo es [Windows o Mac].
+Escribí este comando o código:
+[pega aquí exactamente lo que escribiste]
+Y obtuve este mensaje de error o problema:
+[pega aquí el mensaje completo, copiado desde la terminal]
+Por favor: primero explícame por qué ocurre el problema,
+en lenguaje sencillo (no tengo experiencia en programación),
+y después dame los pasos para resolverlo, uno por uno.</pre><button class="copiar" type="button">Copiar</button></div>
+Tres consejos para que la respuesta sirva:
+<ul>
+  <li><strong>Copia el error completo como texto</strong> — selecciónalo en la terminal y cópialo — mejor que una captura de pantalla o un fragmento suelto.</li>
+  <li><strong>Lee cada comando que la IA te sugiera antes de ejecutarlo</strong>; si no entiendes qué hace, pregúntale. Nunca ejecutes a ciegas comandos que borren archivos o carpetas.</li>
+  <li>Si la primera respuesta no funciona, <strong>cuéntale qué pasó al intentarlo</strong>: la conversación de ida y vuelta es parte normal del proceso.</li>
+</ul>
+</div>
+
+<!-- ================= CHECKLIST ================= -->
+<div class="checklist">
+  <h2>✅ Sabes leer el mapa cuando…</h2>
+  <p>No es una tarea: es un espejo. Marca lo que ya puedas decir con seguridad:</p>
+  <label><input type="checkbox"> Puedo explicar por qué GitHub no ejecuta código — y decir dónde sí se ejecuta (mi computadora o Colab).</label>
+  <label><input type="checkbox"> Sé qué significan la <b>U</b> verde y la <b>M</b> amarilla junto a un archivo, y qué comando responde a cada una.</label>
+  <label><input type="checkbox"> Si veo un punto ● en la pestaña, sé qué hacer antes que cualquier otra cosa.</label>
+  <label><input type="checkbox"> Sé que Git solo respalda lo que fotografío con <code>commit</code> y subo con <code>push</code> — no es OneDrive.</label>
+  <label><input type="checkbox"> Ante un mensaje de error, leo la última línea antes de asustarme.</label>
+  <label><input type="checkbox"> Distingo Colab de VS&nbsp;Code: la misma lógica, en computadoras distintas.</label>
+</div>
+
+<!-- ================= PUENTE ================= -->
+<h2>Qué sigue</h2>
+<p>Este manual no se termina: se vuelve a abrir. Vuelve al <a href="#semaforo">semáforo</a> cuando VS&nbsp;Code te muestre una letra nueva, a la <a href="#errores">tabla de errores</a> cuando la terminal responda algo raro, y al <a href="#mapa">mapa</a> cuando dudes de dónde vive algo. Los paso a paso siguen siendo el <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a>, el <a href="manual_clase02_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a> y el <a href="manual_clase03_tu_propio_repositorio.html" target="_blank" rel="noopener"><b>Manual de la clase 3</b></a> — y tu bitácora sigue esperando una entrada por clase.</p>
+
+<footer>
+  Propedéutico de Matemáticas y Programación · FLACSO Ecuador — Manual de consulta: el mapa de las herramientas, versión julio 2026.<br>
+  Acompaña al <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a> (VS&nbsp;Code, Python y Git), al <a href="manual_clase02_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a> (clonar el repositorio y tu primer entorno) y al <a href="manual_clase03_tu_propio_repositorio.html" target="_blank" rel="noopener"><b>Manual de la clase 3</b></a> (tu propio repositorio).
+</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.copiar').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var texto = btn.parentElement.querySelector('pre').textContent;
+    function listo(){ btn.textContent = 'Copiado ✓'; setTimeout(function(){ btn.textContent = 'Copiar'; }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(listo);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = texto; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); listo(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+});
+var cerrados = [];
+window.addEventListener('beforeprint', function(){
+  cerrados = Array.prototype.filter.call(document.querySelectorAll('details'), function(d){ return !d.open; });
+  cerrados.forEach(function(d){ d.open = true; });
+});
+window.addEventListener('afterprint', function(){
+  cerrados.forEach(function(d){ d.open = false; });
+  cerrados = [];
+});
+</script>
+</body>
+</html>
