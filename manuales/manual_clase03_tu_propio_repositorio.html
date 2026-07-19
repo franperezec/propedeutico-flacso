@@ -146,7 +146,7 @@
 <div class="aviso">
   <b>⚠️ Verifica que ya tienes:</b>
   <ul style="margin:6px 0 0;padding-left:20px">
-    <li><b>Las tres herramientas funcionando</b> — VS&nbsp;Code, Python y Git, con tu identidad configurada en Git (tu nombre y tu correo). Todo está en el <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a>.</li>
+    <li><b>Las tres herramientas funcionando</b> — VS&nbsp;Code, Python y Git, con tu identidad configurada en Git (tu nombre y tu correo). Todo está en el <a href="manual_instalacion_vscode.html" target="_blank" rel="noopener"><b>Manual de instalación</b></a>. Comprobación de 10 segundos: <code>git config --global --list</code> debe mostrar tu <code>user.name</code> y tu <code>user.email</code>; si no aparecen, resuélvelo con la <a href="manual_instalacion_vscode.html#seccion-g" target="_blank" rel="noopener">sección G</a> antes de venir.</li>
     <li><b>La práctica de la clase 2 completa</b> — el repositorio del curso clonado en <code>Documentos/propedeutico</code> y tu entorno <code>.venv</code> creado. Si faltaste o algo quedó a medias, sigue el <a href="manual_clase02_github_primer_entorno.html" target="_blank" rel="noopener"><b>Manual de la clase 2</b></a>.</li>
     <li><b>Tu cuenta de GitHub con el correo verificado</b> — hoy publicarás en ella. Comprueba que puedes iniciar sesión en <a href="https://github.com/login" target="_blank" rel="noopener">github.com/login</a>.</li>
   </ul>
@@ -278,6 +278,8 @@ branch 'main' set up to track 'origin/main'.</span></pre>
 
 Hoy creé mi primer repositorio y aprendí el ciclo
 editar → add → commit → push.</pre><button class="copiar" type="button">Copiar</button></div>
+      <div class="nota"><b>💡 El punto ● en la pestaña significa «sin guardar»</b>
+      Mira la pestaña de <code>bitacora.md</code> en VS&nbsp;Code: mientras muestre un punto ● en lugar de la ✕, lo que escribiste vive solo en la pantalla — en el disco todavía no existe, y para Git «no pasó nada». Al guardar con <span class="ui">Ctrl+S</span> / <span class="ui">⌘S</span> el punto se convierte en ✕: recién entonces Git puede ver tu cambio. Hazlo reflejo: <strong>terminaste de escribir → Ctrl+S</strong>.</div>
       <p style="margin-bottom:0">Los archivos <code>.md</code> (Markdown) son texto plano con formato sencillo: <code>#</code> marca un título, <code>##</code> un subtítulo. GitHub los muestra ya formateados — por eso el README de cualquier repositorio se ve «bonito».</p>
     </div>
   </div>
@@ -340,7 +342,7 @@ Changes to be committed:
       </div>
       <div class="nota"><b>💡 Mensajes de commit que sirven</b>
       Escribe qué hace el cambio, en presente y de forma concreta: «Crea la bitacora del curso», «Anade la entrada de la clase 4». Dentro de unas semanas, <code>git log</code> será tu memoria — un historial de mensajes tipo «cambios» o «avance» no le dice nada a nadie, ni a ti. ¿Y por qué «Anade», sin tilde ni eñe? Git las acepta sin problema, pero muchos proyectos las evitan en los mensajes porque algunas terminales antiguas las muestran mal; sigue la costumbre que prefieras — en tus <em>archivos</em>, escribe siempre con ortografía normal.</div>
-      <p style="margin-bottom:0">El <code>-m</code> es importante: sin él, Git abre un editor para pedirte el mensaje (si te pasó, revisa P5).</p>
+      <p style="margin-bottom:0">El <code>-m</code> es importante — la m de <em>mensaje</em>. Sin él, o si la letra sale mal (el typo clásico es <code>-n</code>), Git abre un editor para pedirte el mensaje (si te pasó, revisa P5).</p>
     </div>
   </div>
 
@@ -446,7 +448,7 @@ git config --global user.email "tu-correo@ejemplo.com"</pre><button class="copia
 </details>
 
 <details>
-  <summary>P5 · Olvidé el <code>-m</code> y la terminal se convirtió en algo extraño</summary>
+  <summary>P5 · Olvidé el <code>-m</code> (o escribí <code>-n</code>) y la terminal se convirtió en algo extraño</summary>
   <p>Git abrió un editor para pedirte el mensaje. Dos escenarios:</p>
   <ol>
     <li><b>Pantalla oscura dentro de la terminal (Vim):</b> presiona <span class="ui">Esc</span>, escribe <code>:q!</code> y presiona Enter. Sales sin guardar y el commit se cancela.</li>
