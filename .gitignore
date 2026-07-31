@@ -25,3 +25,11 @@ desktop.ini
 
 # Guía local para Claude Code (no se publica)
 CLAUDE.md
+
+# Material docente privado (solucionarios y fuentes de manuales) — no se publica
+docente/
+
+# Artefactos que generan los notebooks al ejecutarse (se recrean en cada ejecución)
+clases/matrices/mi_regresion.xlsx
+clases/matrices/resultados_consumo.csv
+clases/matrices/resultados.xlsx
