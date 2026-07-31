@@ -15,6 +15,7 @@
     --sesion:#1d4d6b;
     --sesion-claro:#edf3f8;
     --comun:#1d6b45;
+    --libreria:#8a5a1e;
     --linea:#dcdcd4;
     --mono:Consolas,"SF Mono",Menlo,"Courier New",monospace;
     --serif:Georgia,"Times New Roman",serif;
@@ -47,6 +48,7 @@
   .tarjeta p{margin:0 0 10px;font-size:.95rem;color:var(--tinta-suave)}
   .tarjeta .enlaces{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
   .tarjeta.app{border-left-color:var(--comun)}
+  .tarjeta.libreria{border-left-color:var(--libreria)}
   .tarjeta.inicio{border-left-color:var(--vino)}
 
   .boton{display:inline-block;text-decoration:none;font-weight:600;font-size:.9rem;
@@ -66,6 +68,7 @@
   .etiqueta.clase{background:var(--sesion)}
   .etiqueta.manual{background:var(--vino)}
   .etiqueta.app{background:var(--comun)}
+  .etiqueta.libreria{background:var(--libreria)}
 
   .nota{background:var(--carta);border:1px solid var(--linea);border-left:5px solid var(--sesion);
         border-radius:6px;padding:13px 18px;margin:18px 0;font-size:.92rem;color:var(--tinta-suave)}
@@ -117,11 +120,38 @@
   <h3>Conjuntos y producto cartesiano — Python y Google Colab desde cero</h3>
   <p>Notebook de la primera sesión. Ábrelo en Colab (no requiere instalar nada) y guarda tu propia copia: <i>Archivo → Guardar una copia en Drive</i>.</p>
   <div class="enlaces">
-    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/clase01_conjuntos_producto_cartesiano.ipynb">Abrir en Colab</a>
-    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/clase01_conjuntos_producto_cartesiano.ipynb">Ver en GitHub</a>
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb">Ver en GitHub</a>
   </div>
 </div>
-<p class="nota">Los notebooks de las siguientes sesiones se publicarán aquí a medida que avance el curso.</p>
+<div class="tarjeta">
+  <span class="etiqueta clase">Clase 4 · jue 16-jul</span>
+  <h3>Fundamentos de programación en Python</h3>
+  <p>Taller práctico desde cero: algoritmos, variables y tipos de datos, operadores, listas, tuplas y diccionarios, estructuras de control (<code>if</code>, <code>for</code>, <code>while</code>) y funciones, con un ejercicio integrador de cierre.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_python/fundamentos_python_01.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_python/fundamentos_python_01.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+<div class="tarjeta">
+  <span class="etiqueta clase">Clase 16 · mié 29-jul</span>
+  <h3>Introducción a SymPy — símbolos y álgebra</h3>
+  <p>Primera parte del cálculo simbólico: declara símbolos sobre los reales, sustituye valores, conserva resultados exactos y resuelve ecuaciones — con aplicaciones al equilibrio de mercado.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/intro_sympy_algebra.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/intro_sympy_algebra.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+<div class="tarjeta">
+  <span class="etiqueta clase">Clase 16 · mié 29-jul</span>
+  <h3>Cálculo simbólico con SymPy — límites y reglas de derivación</h3>
+  <p>Límites y derivación simbólica con aplicaciones económicas: las reglas de derivación de la clase, comprobadas paso a paso con SymPy, y tres retos de evaluación al cierre.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/reglas_derivacion_sympy.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/reglas_derivacion_sympy.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+<p class="nota">Los notebooks de matrices (clases 6–11) están más abajo, en la sección <b>Librería del curso</b>. Los de las demás sesiones se publicarán aquí a medida que avance el curso.</p>
 
 <h2>Manuales</h2>
 <div class="tarjeta">
@@ -138,8 +168,8 @@
   <h3>GitHub y tu primer entorno de trabajo</h3>
   <p>Práctica guiada: clonar el repositorio del curso y crear tu primer entorno virtual en VS&nbsp;Code, paso a paso.</p>
   <div class="enlaces">
-    <a target="_blank" rel="noopener" class="boton primario" href="manuales/manual_clase02_github_primer_entorno.html">Leer en el navegador</a>
-    <a target="_blank" rel="noopener" class="boton secundario" href="manuales/manual_clase02_github_primer_entorno.pdf">Descargar PDF</a>
+    <a target="_blank" rel="noopener" class="boton primario" href="manuales/manual_github_primer_entorno.html">Leer en el navegador</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="manuales/manual_github_primer_entorno.pdf">Descargar PDF</a>
   </div>
 </div>
 <div class="tarjeta">
@@ -147,8 +177,8 @@
   <h3>Tu propio repositorio en GitHub</h3>
   <p>Práctica guiada: crea tu repositorio, guarda tus primeros cambios con <code>git add</code> y <code>git commit</code>, y publícalos con <code>git push</code>.</p>
   <div class="enlaces">
-    <a target="_blank" rel="noopener" class="boton primario" href="manuales/manual_clase03_tu_propio_repositorio.html">Leer en el navegador</a>
-    <a target="_blank" rel="noopener" class="boton secundario" href="manuales/manual_clase03_tu_propio_repositorio.pdf">Descargar PDF</a>
+    <a target="_blank" rel="noopener" class="boton primario" href="manuales/manual_tu_propio_repositorio.html">Leer en el navegador</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="manuales/manual_tu_propio_repositorio.pdf">Descargar PDF</a>
   </div>
 </div>
 <div class="tarjeta">
@@ -161,6 +191,44 @@
   </div>
 </div>
 
+<h2>Librería del curso</h2>
+<div class="tarjeta libreria">
+  <span class="etiqueta libreria">Python · álgebra lineal</span>
+  <h3>algebra-lineal-sheets</h3>
+  <p>Librería de Python desarrollada para el curso: hace álgebra lineal con matrices definidas en <b>Google Sheets, Excel o CSV</b> — escribes tus matrices en la hoja de cálculo y las cargas como arreglos de NumPy listos para operar. Se instala con <code>pip install algebra-lineal-sheets</code>; en Google Colab no se necesita nada más.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://pypi.org/project/algebra-lineal-sheets/">Página en PyPI</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/algebra-lineal-sheets">Documentación completa</a>
+  </div>
+</div>
+<div class="tarjeta libreria">
+  <span class="etiqueta libreria">Clases 6–7 · sáb 18-jul · parte 1</span>
+  <h3>NumPy para economistas</h3>
+  <p>Arreglos y operaciones matriciales con NumPy, primera parte de la serie: trabaja con las matrices <code>A</code>, <code>B</code>, <code>v1</code>, <code>v2</code> y <code>b0</code> del archivo <a target="_blank" rel="noopener" href="clases/matrices/matrices_ejemplo.xlsx"><code>matrices_ejemplo.xlsx</code></a>, leídas con la librería del curso.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+<div class="tarjeta libreria">
+  <span class="etiqueta libreria">Clase 9 · mar 21-jul · parte 2</span>
+  <h3>NumPy para economistas 2 — arreglos y matrices</h3>
+  <p>Segunda parte de la serie: vectorización y <i>broadcasting</i>, tipos de matrices, determinante y sistemas <i>Ax&nbsp;=&nbsp;b</i> a cualquier escala, y descomposición espectral con aplicaciones económicas.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas_02.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas_02.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+<div class="tarjeta libreria">
+  <span class="etiqueta libreria">Clase 11 · jue 23-jul</span>
+  <h3>Regresión lineal con matrices: la función de consumo</h3>
+  <p>Estima por mínimos cuadrados ordinarios (MCO) la función de consumo usando solo álgebra matricial, y verifica el resultado con <code>statsmodels</code>. Usa los datos <a target="_blank" rel="noopener" href="clases/matrices/datos_consumo.csv"><code>datos_consumo.csv</code></a> y <a target="_blank" rel="noopener" href="clases/matrices/datos_salarios.csv"><code>datos_salarios.csv</code></a>.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/matrices/regresion_consumo.ipynb">Abrir en Colab</a>
+    <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/matrices/regresion_consumo.ipynb">Ver en GitHub</a>
+  </div>
+</div>
+
 <h2>Aplicaciones interactivas</h2>
 <div class="tarjeta app">
   <span class="etiqueta app">Sesiones 1–2 · lógica proposicional</span>
@@ -168,6 +236,38 @@
   <p>Genera la tabla de verdad de una expresión lógica: AND, OR, NOT, implicación (<code>-&gt;</code>) y bicondicional (<code>&lt;-&gt;</code>). Se abre en el navegador, sin instalar nada.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton verde" href="https://true-table-prope-1--true-table-prope.us-east4.hosted.app/">Abrir aplicación</a>
+  </div>
+</div>
+<div class="tarjeta app">
+  <span class="etiqueta app">Sesión 5 · funciones</span>
+  <h3>Función lineal y cuadrática</h3>
+  <p>Mueve los coeficientes de una recta y de una parábola y observa en tiempo real cómo cambian la pendiente, el vértice y los cortes con los ejes.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton verde" href="https://www.wolframcloud.com/obj/faperezfl/MisParabolas">Abrir aplicación</a>
+  </div>
+</div>
+<div class="tarjeta app">
+  <span class="etiqueta app">Sesión 11 · aplicaciones lineales</span>
+  <h3>Transformaciones lineales</h3>
+  <p>Aplica una matriz 2×2 a una figura del plano y visualiza el efecto geométrico de la transformación lineal: rotaciones, escalamientos, reflexiones y cizallas.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton verde" href="https://www.wolframcloud.com/obj/faperezfl/Transformaciones%20Lineales">Abrir aplicación</a>
+  </div>
+</div>
+<div class="tarjeta app">
+  <span class="etiqueta app">Sesión 15 · concepto de derivada</span>
+  <h3>Derivada como límite</h3>
+  <p>Visualiza la derivada como límite: la recta secante se convierte en tangente a medida que el incremento <i>h</i> se acerca a 0 en el cociente incremental.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton verde" href="https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada">Abrir aplicación</a>
+  </div>
+</div>
+<div class="tarjeta app">
+  <span class="etiqueta app">Sesiones 15–17 · derivadas y optimización</span>
+  <h3>Función y derivada</h3>
+  <p>Grafica una función junto a su derivada para leer la relación entre ambas: donde la derivada es positiva la función crece, y sus ceros marcan los puntos críticos.</p>
+  <div class="enlaces">
+    <a target="_blank" rel="noopener" class="boton verde" href="https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada">Abrir aplicación</a>
   </div>
 </div>
 
