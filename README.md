@@ -93,7 +93,6 @@ propedeutico-flacso/
 │   └── manual_mapa_herramientas.html
 ├── aplicaciones/                  # Índice de aplicaciones web interactivas del curso
 │   └── README.md
-├── datos/                         # Conjuntos de datos usados en clase (cuando aplique)
 ├── silabo_propedeutico_2026.pdf   # Sílabo oficial del curso
 ├── requirements.txt               # Dependencias del curso, con versiones fijadas
 ├── LICENSE                        # Licencia MIT
