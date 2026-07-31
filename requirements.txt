@@ -12,3 +12,9 @@ pandas==3.0.3        # Series y DataFrames, carga de datos CSV/Excel (S9)
 openpyxl==3.1.5      # Lectura y escritura de archivos Excel con pandas (S9)
 sympy==1.14.0        # Cálculo simbólico: límites, derivadas e integrales (S16-19)
 scipy==1.18.0        # Optimización (S17, scipy.optimize) y distribuciones (S22-23, scipy.stats)
+statsmodels==0.14.6  # Regresión MCO con salida profesional: errores estándar, t, p-valores (regresion_consumo)
+nbconvert==7.17.1    # Ejecutar y validar notebooks completos desde la terminal
+
+# Librería del curso: álgebra lineal con matrices en Google Sheets, Excel o CSV (S6-11)
+# El extra [google] añade el soporte de Google Sheets que usamos en clase
+algebra-lineal-sheets[google]==1.4.0
