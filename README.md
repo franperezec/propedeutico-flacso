@@ -125,7 +125,7 @@ Temario completo según el [sílabo](silabo_propedeutico_2026.pdf). El material 
 | 14 | lun 27-jul | Límite de secuencias y de funciones · Visualización con Matplotlib | *(por publicar)* |
 | 15 | mar 28-jul | Continuidad (épsilon-delta y topológica) · Concepto de la derivada | [App Derivada como límite](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) |
 | 16 | mié 29-jul | Reglas de derivación, derivadas parciales, gradiente y matriz Jacobiana · Introducción a SymPy | [`intro_sympy_algebra.ipynb`](clases/calculo_simbolico/intro_sympy_algebra.ipynb) · [`reglas_derivacion_sympy.ipynb`](clases/calculo_simbolico/reglas_derivacion_sympy.ipynb) |
-| 17 | jue 30-jul | Derivadas de orden superior, matriz Hessiana, Taylor y optimización · `scipy.optimize` | [`sympy_optimizacion.ipynb`](clases/calculo_simbolico/sympy_optimizacion.ipynb) · [App Función y derivada](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) |
+| 17 | jue 30-jul | Derivadas de orden superior, matriz Hessiana, Taylor y optimización · `scipy.optimize` | [`sympy_optimizacion.ipynb`](clases/calculo_simbolico/sympy_optimizacion.ipynb) · [App Función y derivada](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) · [App Series de Taylor](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries) |
 | 18 | vie 31-jul | Integración: integral definida e indefinida · Teorema fundamental del cálculo | *(por publicar)* |
 | 19 | lun 03-ago | Reglas de integración, por partes y por sustitución · Integrales con SymPy | *(por publicar)* |
 | 20 | mar 04-ago | Breve introducción a la teoría de la medida | *(por publicar)* |
@@ -170,6 +170,7 @@ Herramientas web del curso, sin instalación — se abren en el navegador. El í
 | **Transformaciones lineales** | Aplica una matriz 2×2 a una figura del plano y visualiza el efecto geométrico de la transformación: rotaciones, escalamientos y reflexiones — sesión 11 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/Transformaciones%20Lineales) |
 | **Derivada como límite** | Muestra la recta secante convirtiéndose en tangente: la derivada como límite del cociente incremental cuando h → 0 — sesión 15 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) |
 | **Función y derivada** | Grafica una función junto a su derivada para conectar el signo de f′ con el crecimiento y los puntos críticos — sesiones 15–17 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) |
+| **Series de Taylor** | Compara una función con su polinomio de Taylor: elige el punto de expansión y el número de términos, y observa la gráfica y el error absoluto — sesiones 16–17 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries) |
 
 ---
 
