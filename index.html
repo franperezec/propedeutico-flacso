@@ -22,22 +22,31 @@
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:58px}
   body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);
        font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
   .pagina{max-width:860px;margin:0 auto;padding:0 22px 90px}
   a{color:var(--vino)}
   a:focus-visible{outline:3px solid var(--sesion);outline-offset:2px;border-radius:3px}
 
-  header.doc{border-bottom:4px double var(--vino);padding:46px 0 26px;margin-bottom:8px}
+  header.doc{border-bottom:4px double var(--vino);padding:28px 0 20px;margin-bottom:8px}
   .sello{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
          color:var(--vino);margin-bottom:14px}
   h1{font-family:var(--serif);font-weight:600;font-size:2.15rem;line-height:1.18;margin:0 0 10px;
      letter-spacing:-.01em}
   .subtitulo{font-family:var(--serif);font-style:italic;font-size:1.12rem;color:var(--tinta-suave);margin:0}
-  .metadatos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:22px;padding-top:16px;
+  .metadatos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:12px;padding-top:10px;
              border-top:1px solid var(--linea);font-size:.86rem;color:var(--tinta-suave)}
   .metadatos b{color:var(--tinta);font-weight:600}
+
+  .navegacion{position:sticky;top:0;z-index:10;background:var(--papel);
+              border-bottom:1px solid var(--linea)}
+  .navegacion ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 4px}
+  .navegacion a{display:flex;align-items:center;min-height:44px;padding:0 10px;
+                text-decoration:none;font-family:var(--mono);font-size:.72rem;
+                letter-spacing:.1em;text-transform:uppercase;color:var(--vino);
+                border-bottom:3px solid transparent}
+  .navegacion a:hover{border-bottom-color:var(--vino)}
 
   h2{font-family:var(--serif);font-size:1.42rem;font-weight:600;margin:48px 0 14px;letter-spacing:-.005em}
   p{margin:0 0 14px}
@@ -51,6 +60,26 @@
   .tarjeta.libreria{border-left-color:var(--libreria)}
   .tarjeta.inicio{border-left-color:var(--vino)}
 
+  .tarjetas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  .tarjetas .tarjeta{margin:0;display:flex;flex-direction:column}
+  .tarjetas .tarjeta .etiqueta{align-self:flex-start}
+  .tarjetas .tarjeta .enlaces{margin-top:auto;padding-top:6px}
+  .tarjeta.ancha{grid-column:1 / -1}
+
+  .ruta{list-style:none;margin:10px 0 0;padding:0;display:grid;
+        grid-template-columns:1fr 1fr;gap:14px}
+  .ruta li{display:flex;gap:12px}
+  .num{flex:0 0 36px;height:36px;border-radius:50%;color:#fff;font-family:var(--serif);
+       font-weight:600;font-size:1rem;display:flex;align-items:center;justify-content:center;
+       margin-top:2px;background:var(--vino)}
+  .ruta .permanente .num{background:var(--carta);color:var(--vino);border:2px solid var(--vino)}
+  .contenido{min-width:0;flex:1}
+  .ruta p{margin:0}
+  .micro{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+         text-transform:uppercase;color:var(--tinta-suave);margin-bottom:2px}
+
+  .seccion-intro{font-size:.92rem;color:var(--tinta-suave);margin:-6px 0 4px}
+
   .boton{display:inline-block;text-decoration:none;font-weight:600;font-size:.9rem;
          padding:7px 16px;border-radius:5px;border:1px solid var(--linea)}
   .boton.primario{background:var(--sesion);border-color:var(--sesion);color:#fff}
@@ -62,7 +91,7 @@
   .boton.verde{background:var(--comun);border-color:var(--comun);color:#fff}
   .boton.verde:hover{background:#175538}
 
-  .etiqueta{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  .etiqueta{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
             text-transform:uppercase;color:#fff;background:var(--tinta-suave);border-radius:3px;
             padding:2px 9px;margin-bottom:8px}
   .etiqueta.clase{background:var(--sesion)}
@@ -78,8 +107,17 @@
   footer p{margin:0 0 6px}
 
   @media (max-width:640px){
-    h1{font-size:1.7rem}
-    .tarjeta .enlaces{flex-direction:column;align-items:flex-start}
+    h1{font-size:1.5rem}
+    header.doc{padding:18px 0 14px}
+    .navegacion ul{justify-content:space-between;gap:0}
+    .navegacion a{font-size:.66rem;letter-spacing:.06em;padding:0 5px}
+    .tarjetas{grid-template-columns:1fr}
+    .ruta{grid-template-columns:1fr}
+    .tarjeta .enlaces{flex-direction:column}
+    .boton{display:block;width:100%;text-align:center;padding:11px 16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
   }
 </style>
 </head>
@@ -91,13 +129,47 @@
   <h1>Propedéutico de Matemáticas y Programación en Python</h1>
   <p class="subtitulo">Materiales del curso — notebooks, manuales y aplicaciones, en un solo lugar.</p>
   <div class="metadatos">
-    <span><b>Temario y calendario:</b> <a target="_blank" rel="noopener" href="silabo_propedeutico_2026.pdf">sílabo del curso (PDF)</a></span>
     <span><b>Docentes:</b> Francisco Pérez M. · David Villamar C.</span>
     <span><b>Programa:</b> Maestría en Economía del Desarrollo</span>
   </div>
 </header>
 
-<h2>Empieza aquí</h2>
+<nav class="navegacion" aria-label="Secciones de la página">
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#clases">Clases</a></li>
+    <li><a href="#manuales">Manuales</a></li>
+    <li><a href="#libreria">Librería</a></li>
+    <li><a href="#apps">Apps</a></li>
+  </ul>
+</nav>
+
+<h2 id="inicio">Empieza aquí</h2>
+<div class="tarjetas">
+
+<div class="tarjeta inicio ancha">
+  <h3>¿Nuevo en el curso? Empieza así</h3>
+  <p>Nadie llega sabiendo programar: estos pasos te dejan en marcha.</p>
+  <ol class="ruta">
+    <li>
+      <span class="num" aria-hidden="true">1</span>
+      <div class="contenido"><p><b>Abre tu primer notebook.</b> <a target="_blank" rel="noopener" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb">Conjuntos y producto cartesiano, en Google Colab</a> — funciona en el navegador, sin instalar nada. Guarda tu copia con <i>Archivo → Guardar una copia en Drive</i>.</p></div>
+    </li>
+    <li>
+      <span class="num" aria-hidden="true">2</span>
+      <div class="contenido"><p><b>Prepara tu computadora.</b> Cuando tengas una hora libre, sigue el <a target="_blank" rel="noopener" href="manuales/manual_instalacion_vscode.html">manual de instalación de VS&nbsp;Code, Python y Git</a>. Se hace una sola vez.</p></div>
+    </li>
+    <li>
+      <span class="num" aria-hidden="true">3</span>
+      <div class="contenido"><p><b>Conecta tu trabajo con Git y GitHub.</b> Practica con <a target="_blank" rel="noopener" href="manuales/manual_github_primer_entorno.html">tu primer entorno de trabajo</a> y después crea <a target="_blank" rel="noopener" href="manuales/manual_tu_propio_repositorio.html">tu propio repositorio</a>.</p></div>
+    </li>
+    <li class="permanente">
+      <span class="num" aria-hidden="true">↻</span>
+      <div class="contenido"><p><span class="micro">todo el curso</span><b>Vuelve seguido.</b> El material nuevo se publica en esta misma página: usa la barra de arriba para saltar a <a href="#clases">Clases</a>, la <a href="#libreria">Librería</a> o las <a href="#apps">Apps</a>.</p></div>
+    </li>
+  </ol>
+</div>
+
 <div class="tarjeta inicio">
   <h3>Guía del repositorio y sílabo</h3>
   <p>El repositorio en GitHub explica las dos vías de trabajo (Colab o VS&nbsp;Code), cómo clonar y actualizar los materiales, y el índice temático de todo lo publicado. El temario completo y el calendario están en el sílabo.</p>
@@ -114,11 +186,15 @@
   </div>
 </div>
 
-<h2>Clases</h2>
+</div>
+
+<h2 id="clases">Clases</h2>
+<p class="seccion-intro">Los notebooks del curso en orden pedagógico: conjuntos, fundamentos de Python y cálculo simbólico.</p>
+<div class="tarjetas">
 <div class="tarjeta">
   <span class="etiqueta clase">Fundamentos de matemáticas · conjuntos</span>
-  <h3>Conjuntos y producto cartesiano — Python y Google Colab desde cero</h3>
-  <p>El punto de partida del curso. Ábrelo en Colab (no requiere instalar nada) y guarda tu propia copia: <i>Archivo → Guardar una copia en Drive</i>.</p>
+  <h3>Conjuntos y producto cartesiano</h3>
+  <p>El punto de partida del curso: Python y Google Colab desde cero, sin instalar nada. Guarda tu propia copia: <i>Archivo → Guardar una copia en Drive</i>.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb">Ver en GitHub</a>
@@ -127,7 +203,7 @@
 <div class="tarjeta">
   <span class="etiqueta clase">Fundamentos de Python</span>
   <h3>Fundamentos de programación en Python</h3>
-  <p>Taller práctico desde cero: algoritmos, variables y tipos de datos, operadores, listas, tuplas y diccionarios, estructuras de control (<code>if</code>, <code>for</code>, <code>while</code>) y funciones, con un ejercicio integrador de cierre.</p>
+  <p>Taller desde cero: variables, listas y diccionarios, condicionales, bucles y funciones, con un ejercicio integrador al cierre.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_python/fundamentos_python_01.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_python/fundamentos_python_01.ipynb">Ver en GitHub</a>
@@ -144,8 +220,8 @@
 </div>
 <div class="tarjeta">
   <span class="etiqueta clase">Cálculo simbólico · derivadas</span>
-  <h3>Cálculo simbólico con SymPy — límites, derivadas y series de Taylor</h3>
-  <p>Límites, derivación simbólica y series de Taylor con aplicaciones económicas: las reglas de derivación comprobadas paso a paso con SymPy, la aproximación ln(1+r) ≈ r para tasas pequeñas y cuatro retos de evaluación al cierre.</p>
+  <h3>Límites, derivadas y series de Taylor</h3>
+  <p>Límites, reglas de derivación comprobadas paso a paso y series de Taylor, con aplicaciones económicas y retos de evaluación al cierre.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/reglas_derivacion_sympy.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/reglas_derivacion_sympy.ipynb">Ver en GitHub</a>
@@ -153,16 +229,20 @@
 </div>
 <div class="tarjeta">
   <span class="etiqueta clase">Cálculo simbólico · optimización</span>
-  <h3>Optimización analítica y métodos numéricos — SymPy, NumPy y Matplotlib</h3>
-  <p>De ℝ→ℝ a ℝⁿ→ℝᵐ: Taylor, condiciones de primer y segundo orden, Hessianas y formas cuadráticas, aplicaciones económicas y un módulo opcional de ascenso por gradiente.</p>
+  <h3>Optimización analítica y numérica</h3>
+  <p>Condiciones de primer y segundo orden, Hessianas y formas cuadráticas, con SymPy, NumPy y Matplotlib.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/sympy_optimizacion.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/calculo_simbolico/sympy_optimizacion.ipynb">Ver en GitHub</a>
   </div>
 </div>
+
+</div>
 <p class="nota">Los notebooks de <b>álgebra lineal y matrices</b> están más abajo, en la sección <b>Librería del curso</b>. El material nuevo se publica en esta misma página a medida que avanza el curso; el temario completo está en el <a target="_blank" rel="noopener" href="silabo_propedeutico_2026.pdf">sílabo (PDF)</a>.</p>
 
-<h2>Manuales</h2>
+<h2 id="manuales">Manuales</h2>
+<p class="seccion-intro">Guías paso a paso de las herramientas: la de instalación se hace una sola vez; el mapa se consulta todo el curso.</p>
+<div class="tarjetas">
 <div class="tarjeta">
   <span class="etiqueta manual">Preparación · hazlo primero</span>
   <h3>Manual de instalación — VS&nbsp;Code, Python y Git</h3>
@@ -193,18 +273,22 @@
 <div class="tarjeta">
   <span class="etiqueta manual">Referencia · consulta todo el curso</span>
   <h3>El mapa de las herramientas</h3>
-  <p>Manual de consulta: qué hace (y qué no hace) cada pieza del taller — VS&nbsp;Code, Python, Git, GitHub, terminal, notebooks, Colab —, el semáforo de estados de VS&nbsp;Code y los errores de siempre con su remedio.</p>
+  <p>Qué hace (y qué no) cada herramienta del curso, el semáforo de estados de VS&nbsp;Code y los errores de siempre con su remedio.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="manuales/manual_mapa_herramientas.html">Leer en el navegador</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="manuales/manual_mapa_herramientas.pdf">Descargar PDF</a>
   </div>
 </div>
 
-<h2>Librería del curso</h2>
-<div class="tarjeta libreria">
+</div>
+
+<h2 id="libreria">Librería del curso</h2>
+<p class="seccion-intro">La librería <code>algebra-lineal-sheets</code> y los notebooks de álgebra lineal y matrices que la usan.</p>
+<div class="tarjetas">
+<div class="tarjeta libreria ancha">
   <span class="etiqueta libreria">Python · álgebra lineal</span>
   <h3>algebra-lineal-sheets</h3>
-  <p>Librería de Python desarrollada para el curso: hace álgebra lineal con matrices definidas en <b>Google Sheets, Excel o CSV</b> — escribes tus matrices en la hoja de cálculo y las cargas como arreglos de NumPy listos para operar. Se instala con <code>pip install algebra-lineal-sheets</code>; en Google Colab no se necesita nada más.</p>
+  <p>Librería del curso: escribe tus matrices en <b>Google Sheets, Excel o CSV</b> y cárgalas como arreglos de NumPy listos para operar. Se instala con <code>pip install algebra-lineal-sheets</code>; en Colab no necesitas nada más.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://pypi.org/project/algebra-lineal-sheets/">Página en PyPI</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/algebra-lineal-sheets">Documentación completa</a>
@@ -212,8 +296,8 @@
 </div>
 <div class="tarjeta libreria">
   <span class="etiqueta libreria">Álgebra lineal · parte 1</span>
-  <h3>NumPy para economistas</h3>
-  <p>Arreglos y operaciones matriciales con NumPy, primera parte de la serie: trabaja con las matrices <code>A</code>, <code>B</code>, <code>v1</code>, <code>v2</code> y <code>b0</code> del archivo <a target="_blank" rel="noopener" href="clases/matrices/matrices_ejemplo.xlsx"><code>matrices_ejemplo.xlsx</code></a>, leídas con la librería del curso.</p>
+  <h3>NumPy para economistas · parte 1</h3>
+  <p>Arreglos y operaciones matriciales con NumPy: trabaja con las matrices de <a target="_blank" rel="noopener" href="clases/matrices/matrices_ejemplo.xlsx"><code>matrices_ejemplo.xlsx</code></a>, leídas con la librería del curso.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas.ipynb">Ver en GitHub</a>
@@ -221,8 +305,8 @@
 </div>
 <div class="tarjeta libreria">
   <span class="etiqueta libreria">Álgebra lineal · parte 2</span>
-  <h3>NumPy para economistas 2 — arreglos y matrices</h3>
-  <p>Segunda parte de la serie: vectorización y <i>broadcasting</i>, tipos de matrices, determinante y sistemas <i>Ax&nbsp;=&nbsp;b</i> a cualquier escala, y descomposición espectral con aplicaciones económicas.</p>
+  <h3>NumPy para economistas · parte 2</h3>
+  <p>Vectorización y <i>broadcasting</i>, determinante, sistemas <i>Ax&nbsp;=&nbsp;b</i> a cualquier escala y descomposición espectral, con aplicaciones económicas.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas_02.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/matrices/numpy_para_economistas_02.ipynb">Ver en GitHub</a>
@@ -231,14 +315,18 @@
 <div class="tarjeta libreria">
   <span class="etiqueta libreria">Álgebra lineal · regresión MCO</span>
   <h3>Regresión lineal con matrices: la función de consumo</h3>
-  <p>Estima por mínimos cuadrados ordinarios (MCO) la función de consumo usando solo álgebra matricial, y verifica el resultado con <code>statsmodels</code>. Usa los datos <a target="_blank" rel="noopener" href="clases/matrices/datos_consumo.csv"><code>datos_consumo.csv</code></a> y <a target="_blank" rel="noopener" href="clases/matrices/datos_salarios.csv"><code>datos_salarios.csv</code></a>.</p>
+  <p>Estima la función de consumo por MCO con álgebra matricial y verifica con <code>statsmodels</code>. Datos: <a target="_blank" rel="noopener" href="clases/matrices/datos_consumo.csv"><code>datos_consumo.csv</code></a> · <a target="_blank" rel="noopener" href="clases/matrices/datos_salarios.csv"><code>datos_salarios.csv</code></a>.</p>
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton primario" href="https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/matrices/regresion_consumo.ipynb">Abrir en Colab</a>
     <a target="_blank" rel="noopener" class="boton secundario" href="https://github.com/franperezec/propedeutico-flacso/blob/main/clases/matrices/regresion_consumo.ipynb">Ver en GitHub</a>
   </div>
 </div>
 
-<h2>Aplicaciones interactivas</h2>
+</div>
+
+<h2 id="apps">Aplicaciones interactivas</h2>
+<p class="seccion-intro">Simuladores en el navegador para construir intuición: lógica, funciones, álgebra lineal y derivadas. Nada que instalar.</p>
+<div class="tarjetas">
 <div class="tarjeta app">
   <span class="etiqueta app">Lógica proposicional</span>
   <h3>Tablas de Verdad</h3>
@@ -286,6 +374,8 @@
   <div class="enlaces">
     <a target="_blank" rel="noopener" class="boton verde" href="https://www.wolframcloud.com/obj/faperezfl/TaylorSeries">Abrir aplicación</a>
   </div>
+</div>
+
 </div>
 
 <footer>
