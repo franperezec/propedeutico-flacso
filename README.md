@@ -12,7 +12,7 @@ Curso propedéutico para estudiantes de posgrado en ciencias sociales **sin expe
 
 📝 **[Pizarra de clase (Miro)](https://miro.com/app/board/uXjVH8KD80I=/?share_link_id=332769285692)** — los apuntes a mano de los profesores, clase por clase.
 
-📄 **[Sílabo del curso (PDF)](silabo_propedeutico_2026.pdf)** — fechas, horarios, evaluación y bibliografía. El curso se dicta del **13 de julio al 8 de agosto de 2026** (Maestría en Economía del Desarrollo, FLACSO Ecuador).
+📄 **[Sílabo del curso (PDF)](silabo_propedeutico_2026.pdf)** — temario completo, calendario, horarios, evaluación y bibliografía del propedéutico (Maestría en Economía del Desarrollo, FLACSO Ecuador).
 
 ---
 
@@ -20,14 +20,14 @@ Curso propedéutico para estudiantes de posgrado en ciencias sociales **sin expe
 
 Hay dos vías, y ambas están cubiertas por los manuales de la carpeta [`manuales/`](manuales/), pensados para leerse **directamente en el navegador** o descargarse en **PDF** para imprimir o consultar sin conexión:
 
-- 🛠️ [Manual de instalación — VS Code, Python y Git (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) — complétalo **antes** de la clase 2
+- 🛠️ [Manual de instalación — VS Code, Python y Git (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) — complétalo **primero**: deja tu equipo listo para todo el curso
 - 📖 [Manual de GitHub y tu primer entorno (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_github_primer_entorno.html) · [PDF](manuales/manual_github_primer_entorno.pdf)
 - 📖 [Manual de tu propio repositorio en GitHub (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_tu_propio_repositorio.html) · [PDF](manuales/manual_tu_propio_repositorio.pdf)
 - 🧭 [El mapa de las herramientas (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_mapa_herramientas.html) · [PDF](manuales/manual_mapa_herramientas.pdf) — manual de consulta para todo el curso: qué hace (y qué no) cada herramienta, el semáforo de VS Code y los errores frecuentes
 
 ### Vía A — Google Colab (sin instalar nada)
 
-Cada notebook de la carpeta [`clases/`](clases/) puede abrirse directamente en Colab con el botón *Open in Colab*, o desde este enlace de ejemplo para la Clase 1:
+Cada notebook de la carpeta [`clases/`](clases/) puede abrirse directamente en Colab con el botón *Open in Colab*, o desde este enlace de ejemplo (el notebook de conjuntos y producto cartesiano):
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/franperezec/propedeutico-flacso/blob/main/clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb)
 
@@ -57,9 +57,9 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-### Actualizar los materiales cada semana
+### Actualizar los materiales
 
-Los materiales nuevos se publican en este mismo repositorio. Con el repositorio abierto, basta:
+Los materiales nuevos se publican en este mismo repositorio a medida que avanza el curso. Con el repositorio abierto, basta:
 
 ```bash
 git pull
@@ -72,7 +72,7 @@ git pull
 ```
 propedeutico-flacso/
 ├── clases/                        # Notebooks del curso, por tema (patrón «Yo hago / Tú haces»)
-│   ├── fundamentos_matematicas/   # Conjuntos y producto cartesiano (clase 1)
+│   ├── fundamentos_matematicas/   # Conjuntos y producto cartesiano
 │   │   └── conjuntos_producto_cartesiano.ipynb
 │   ├── fundamentos_python/        # Taller de fundamentos de programación
 │   │   └── fundamentos_python_01.ipynb
@@ -94,7 +94,7 @@ propedeutico-flacso/
 │   └── manual_mapa_herramientas.html
 ├── aplicaciones/                  # Índice de aplicaciones web interactivas del curso
 │   └── README.md
-├── silabo_propedeutico_2026.pdf   # Sílabo oficial del curso
+├── silabo_propedeutico_2026.pdf   # Sílabo oficial (temario completo y calendario)
 ├── requirements.txt               # Dependencias del curso, con versiones fijadas
 ├── LICENSE                        # Licencia MIT
 └── README.md
@@ -104,35 +104,37 @@ propedeutico-flacso/
 
 ## Contenido del curso
 
-Temario completo según el [sílabo](silabo_propedeutico_2026.pdf). El material de cada sesión se publica en este repositorio a medida que avanza el curso.
+El material se organiza **por tema**, siguiendo las subcarpetas de [`clases/`](clases/). Este índice recoge únicamente el material ya publicado; el curso cubre más temas de los que aparecen aquí — el temario completo, con su calendario, está en el [sílabo (PDF)](silabo_propedeutico_2026.pdf).
 
-| Sesión | Fecha | Tema | Material |
-|:------:|-------|------|----------|
-| 1 | lun 13-jul | Sistemas numéricos y operaciones fundamentales entre conjuntos · Python y Google Colab desde cero | [`conjuntos_producto_cartesiano.ipynb`](clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb) |
-| — | *en casa* | *Preparación:* instalación de VS Code, Python y Git · cuentas de Gmail y GitHub | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_instalacion_vscode.html) · [PDF](manuales/manual_instalacion_vscode.pdf) |
-| 2 | mar 14-jul | Teoría de conjuntos y lógica proposicional · Git y GitHub en la práctica: clonar el repositorio y crear tu primer entorno virtual | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_github_primer_entorno.html) · [PDF](manuales/manual_github_primer_entorno.pdf) · [App Tablas de Verdad](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
-| 3 | mié 15-jul | Instalación y configuración del entorno Python (Anaconda, Jupyter, VS Code) · Introducción a Jupyter Notebooks | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_tu_propio_repositorio.html) · [PDF](manuales/manual_tu_propio_repositorio.pdf) |
-| — | *consulta* | *Referencia:* el mapa de las herramientas — qué hace (y qué no) cada pieza · semáforo de VS Code · errores frecuentes | [Manual (web)](https://franperezec.github.io/propedeutico-flacso/manuales/manual_mapa_herramientas.html) · [PDF](manuales/manual_mapa_herramientas.pdf) |
-| 4 | jue 16-jul | Algoritmos de programación, tipos de variables y operadores · Estructuras de datos básicas en Python | [`fundamentos_python_01.ipynb`](clases/fundamentos_python/fundamentos_python_01.ipynb) |
-| 5 | vie 17-jul | Funciones: imagen, preimagen, grafo, función compuesta y cardinalidad | [App Función lineal y cuadrática](https://www.wolframcloud.com/obj/faperezfl/MisParabolas) |
-| 6–7 | sáb 18-jul | Espacios vectoriales, combinaciones lineales, independencia lineal y bases · Matrices y cálculo matricial con NumPy | [`numpy_para_economistas.ipynb`](clases/matrices/numpy_para_economistas.ipynb) |
-| 8 | lun 20-jul | Funciones en Python, estructuras de control (`if`, `for`, `while`) · List comprehensions | *(por publicar)* |
-| 9 | mar 21-jul | NumPy: arrays, vectorización y broadcasting · Pandas: Series, DataFrames y carga de datos (CSV, Excel) | [`numpy_para_economistas_02.ipynb`](clases/matrices/numpy_para_economistas_02.ipynb) |
-| 10 | mié 22-jul | Traza, determinante e inversión de matrices · Aplicaciones con NumPy | *(por publicar)* |
-| 11 | jue 23-jul | Aplicaciones lineales, kernel e imagen · Sistemas de ecuaciones lineales con `numpy.linalg` | [`regresion_consumo.ipynb`](clases/matrices/regresion_consumo.ipynb) · [App Transformaciones lineales](https://www.wolframcloud.com/obj/faperezfl/Transformaciones%20Lineales) |
-| 12 | vie 24-jul | Formas cuadráticas, matrices definidas y semidefinidas · Valores y vectores propios | *(por publicar)* |
-| 13 | sáb 25-jul | Espacios métricos y nociones topológicas fundamentales | *(por publicar)* |
-| 14 | lun 27-jul | Límite de secuencias y de funciones · Visualización con Matplotlib | *(por publicar)* |
-| 15 | mar 28-jul | Continuidad (épsilon-delta y topológica) · Concepto de la derivada | [App Derivada como límite](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) |
-| 16 | mié 29-jul | Reglas de derivación, derivadas parciales, gradiente y matriz Jacobiana · Introducción a SymPy | [`intro_sympy_algebra.ipynb`](clases/calculo_simbolico/intro_sympy_algebra.ipynb) · [`reglas_derivacion_sympy.ipynb`](clases/calculo_simbolico/reglas_derivacion_sympy.ipynb) |
-| 17 | jue 30-jul | Derivadas de orden superior, matriz Hessiana, Taylor y optimización · `scipy.optimize` | [`sympy_optimizacion.ipynb`](clases/calculo_simbolico/sympy_optimizacion.ipynb) · [App Función y derivada](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) · [App Series de Taylor](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries) |
-| 18 | vie 31-jul | Integración: integral definida e indefinida · Teorema fundamental del cálculo | *(por publicar)* |
-| 19 | lun 03-ago | Reglas de integración, por partes y por sustitución · Integrales con SymPy | *(por publicar)* |
-| 20 | mar 04-ago | Breve introducción a la teoría de la medida | *(por publicar)* |
-| 21 | mié 05-ago | Espacios de probabilidad · Probabilidad condicional e independencia, aplicación en Python | *(por publicar)* |
-| 22 | jue 06-ago | Variables aleatorias, esperanza y varianza · Aplicaciones en Python | *(por publicar)* |
-| 23 | vie 07-ago | Función de distribución acumulativa y de densidad · Distribuciones de probabilidad con Python | *(por publicar)* |
-| 24 | sáb 08-ago | **Examen final** (08:00–10:00) | — |
+### Fundamentos de matemáticas
+
+| Notebook | Qué cubre |
+|----------|-----------|
+| [`conjuntos_producto_cartesiano.ipynb`](clases/fundamentos_matematicas/conjuntos_producto_cartesiano.ipynb) | **Conjuntos y producto cartesiano:** sistemas numéricos, operaciones fundamentales entre conjuntos y producto cartesiano — y, en paralelo, Python y Google Colab desde cero |
+
+*Aplicaciones relacionadas:* [Tablas de Verdad](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) (lógica proposicional) · [Función lineal y cuadrática](https://www.wolframcloud.com/obj/faperezfl/MisParabolas) (funciones).
+
+### Fundamentos de programación en Python
+
+| Notebook | Qué cubre |
+|----------|-----------|
+| [`fundamentos_python_01.ipynb`](clases/fundamentos_python/fundamentos_python_01.ipynb) | **Taller de fundamentos:** algoritmos, variables y tipos de datos, operadores, listas, tuplas y diccionarios, estructuras de control (`if`, `for`, `while`) y funciones, con un ejercicio integrador de cierre |
+
+### Álgebra lineal y matrices
+
+La serie de notebooks de matrices — *NumPy para economistas* (partes 1 y 2) y la regresión de la función de consumo por MCO — usa la librería del curso y está documentada, con sus datos, en la sección [Librería del curso](#librería-del-curso-algebra-lineal-sheets).
+
+*Aplicación relacionada:* [Transformaciones lineales](https://www.wolframcloud.com/obj/faperezfl/Transformaciones%20Lineales) (aplicaciones lineales).
+
+### Cálculo simbólico y optimización
+
+| Notebook | Qué cubre |
+|----------|-----------|
+| [`intro_sympy_algebra.ipynb`](clases/calculo_simbolico/intro_sympy_algebra.ipynb) | **Introducción a SymPy — símbolos y álgebra:** declarar símbolos sobre los reales, sustituir valores, conservar resultados exactos y resolver ecuaciones, con aplicaciones al equilibrio de mercado |
+| [`reglas_derivacion_sympy.ipynb`](clases/calculo_simbolico/reglas_derivacion_sympy.ipynb) | **Límites, derivadas y series de Taylor:** las reglas de derivación comprobadas paso a paso con SymPy y la aproximación ln(1+r) ≈ r para tasas pequeñas |
+| [`sympy_optimizacion.ipynb`](clases/calculo_simbolico/sympy_optimizacion.ipynb) | **Optimización analítica y métodos numéricos:** condiciones de primer y segundo orden, Hessianas y formas cuadráticas, con SymPy, NumPy y Matplotlib |
+
+*Aplicaciones relacionadas:* [Derivada como límite](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) · [Función y derivada](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) · [Series de Taylor](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries).
 
 ---
 
@@ -165,18 +167,18 @@ Herramientas web del curso, sin instalación — se abren en el navegador. El í
 
 | Aplicación | Qué hace | Enlace |
 |------------|----------|--------|
-| **Tablas de Verdad** | Genera la tabla de verdad de una expresión lógica (AND, OR, NOT, `->`, `<->`) — sesiones 1–2 | [Abrir aplicación](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
-| **Función lineal y cuadrática** | Mueve los coeficientes de una recta y de una parábola y observa cómo cambian la pendiente, el vértice y los cortes con los ejes — sesión 5 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/MisParabolas) |
-| **Transformaciones lineales** | Aplica una matriz 2×2 a una figura del plano y visualiza el efecto geométrico de la transformación: rotaciones, escalamientos y reflexiones — sesión 11 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/Transformaciones%20Lineales) |
-| **Derivada como límite** | Muestra la recta secante convirtiéndose en tangente: la derivada como límite del cociente incremental cuando h → 0 — sesión 15 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) |
-| **Función y derivada** | Grafica una función junto a su derivada para conectar el signo de f′ con el crecimiento y los puntos críticos — sesiones 15–17 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) |
-| **Series de Taylor** | Compara una función con su polinomio de Taylor: elige el punto de expansión y el número de términos, y observa la gráfica y el error absoluto — sesiones 16–17 | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries) |
+| **Tablas de Verdad** | Genera la tabla de verdad de una expresión lógica (AND, OR, NOT, `->`, `<->`) — lógica proposicional | [Abrir aplicación](https://true-table-prope-1--true-table-prope.us-east4.hosted.app/) |
+| **Función lineal y cuadrática** | Mueve los coeficientes de una recta y de una parábola y observa cómo cambian la pendiente, el vértice y los cortes con los ejes — funciones | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/MisParabolas) |
+| **Transformaciones lineales** | Aplica una matriz 2×2 a una figura del plano y visualiza el efecto geométrico de la transformación: rotaciones, escalamientos y reflexiones — álgebra lineal | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/Transformaciones%20Lineales) |
+| **Derivada como límite** | Muestra la recta secante convirtiéndose en tangente: la derivada como límite del cociente incremental cuando h → 0 — cálculo diferencial | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) |
+| **Función y derivada** | Grafica una función junto a su derivada para conectar el signo de f′ con el crecimiento y los puntos críticos — derivadas y optimización | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) |
+| **Series de Taylor** | Compara una función con su polinomio de Taylor: elige el punto de expansión y el número de términos, y observa la gráfica y el error absoluto — series de Taylor | [Abrir aplicación](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries) |
 
 ---
 
 ## Metodología
 
-Cada sesión sigue el patrón **«Yo hago / Tú haces»**: primero el docente ejecuta y explica; luego el estudiante resuelve un ejercicio análogo con solución oculta en celdas colapsables, para intentar antes de mirar. Todos los notebooks están escritos íntegramente en español (código, comentarios y texto), usan semillas deterministas cuando hay componentes aleatorios y se validan mediante **ejecución completa** antes de publicarse. La notación matemática acompaña siempre al código: la sintaxis de Python se presenta como traducción casi literal del lenguaje de la pizarra.
+Cada notebook sigue el patrón **«Yo hago / Tú haces»**: primero el docente ejecuta y explica; luego el estudiante resuelve un ejercicio análogo con solución oculta en celdas colapsables, para intentar antes de mirar. Todos los notebooks están escritos íntegramente en español (código, comentarios y texto), usan semillas deterministas cuando hay componentes aleatorios y se validan mediante **ejecución completa** antes de publicarse. La notación matemática acompaña siempre al código: la sintaxis de Python se presenta como traducción casi literal del lenguaje de la pizarra.
 
 ## Requisitos previos
 
