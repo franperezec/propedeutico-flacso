@@ -133,6 +133,7 @@ La serie de notebooks de matrices — *NumPy para economistas* (partes 1 y 2) y 
 | [`intro_sympy_algebra.ipynb`](clases/calculo_simbolico/intro_sympy_algebra.ipynb) | **Introducción a SymPy — símbolos y álgebra:** declarar símbolos sobre los reales, sustituir valores, conservar resultados exactos y resolver ecuaciones, con aplicaciones al equilibrio de mercado |
 | [`reglas_derivacion_sympy.ipynb`](clases/calculo_simbolico/reglas_derivacion_sympy.ipynb) | **Límites, derivadas y series de Taylor:** las reglas de derivación comprobadas paso a paso con SymPy y la aproximación ln(1+r) ≈ r para tasas pequeñas |
 | [`sympy_optimizacion.ipynb`](clases/calculo_simbolico/sympy_optimizacion.ipynb) | **Optimización analítica y métodos numéricos:** condiciones de primer y segundo orden, Hessianas y formas cuadráticas, con SymPy, NumPy y Matplotlib |
+| [`sympy_integrales.ipynb`](clases/calculo_simbolico/sympy_integrales.ipynb) | **Integrales — del flujo al stock y al valor presente:** antiderivadas e integrales definidas con SymPy, recuperación del stock de capital desde el flujo de inversión, valor presente con horizonte infinito y la condición de convergencia r > g |
 
 *Aplicaciones relacionadas:* [Derivada como límite](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) · [Función y derivada](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) · [Series de Taylor](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries).
 
