@@ -83,10 +83,13 @@ propedeutico-flacso/
 │   │   ├── matrices_ejemplo.xlsx
 │   │   ├── datos_consumo.csv
 │   │   └── datos_salarios.csv
-│   └── calculo_simbolico/         # Cálculo simbólico con SymPy
-│       ├── intro_sympy_algebra.ipynb
-│       ├── reglas_derivacion_sympy.ipynb
-│       └── sympy_optimizacion.ipynb
+│   ├── calculo_simbolico/         # Cálculo simbólico con SymPy
+│   │   ├── intro_sympy_algebra.ipynb
+│   │   ├── reglas_derivacion_sympy.ipynb
+│   │   ├── sympy_optimizacion.ipynb
+│   │   └── sympy_integrales.ipynb
+│   └── analitica_datos/           # Analítica de datos: miniestudio empírico de regresión
+│       └── brecha_salarial.ipynb
 ├── manuales/                      # Guías paso a paso para preparar tu equipo
 │   ├── manual_instalacion_vscode.html
 │   ├── manual_github_primer_entorno.html
@@ -136,6 +139,12 @@ La serie de notebooks de matrices — *NumPy para economistas* (partes 1 y 2) y 
 | [`sympy_integrales.ipynb`](clases/calculo_simbolico/sympy_integrales.ipynb) | **Integrales — del flujo al stock y al valor presente:** antiderivadas e integrales definidas con SymPy, recuperación del stock de capital desde el flujo de inversión, valor presente con horizonte infinito y la condición de convergencia r > g |
 
 *Aplicaciones relacionadas:* [Derivada como límite](https://www.wolframcloud.com/obj/faperezfl/LimiteDerivada) · [Función y derivada](https://www.wolframcloud.com/obj/faperezfl/Funcion%20y%20Derivada) · [Series de Taylor](https://www.wolframcloud.com/obj/faperezfl/TaylorSeries).
+
+### Analítica de datos
+
+| Notebook | Qué cubre |
+|----------|-----------|
+| [`brecha_salarial.ipynb`](clases/analitica_datos/brecha_salarial.ipynb) | **Brecha salarial por sexo — un miniestudio con datos reales:** el flujo completo de un estudio empírico con los datos [`wage1.csv`](clases/analitica_datos/wage1.csv) (CPS 1976, Wooldridge): descriptivos y distribuciones condicionadas con Pandas, MCO como problema de optimización resuelto con álgebra matricial, verificación con `statsmodels` y la discusión sobre brecha y discriminación |
 
 ---
 
